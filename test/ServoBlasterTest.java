@@ -9,8 +9,11 @@ import main.ServoBlaster;
  */
 public class ServoBlasterTest {
     @Test
-    public void setPulseWidth() throws Exception {
+    public static void main(String[] a) throws InterruptedException {
+        ServoBlaster blaster = new ServoBlaster(5000);
+    }
+    /*public void setPulseWidth() throws Exception {
         ServoBlaster blaster = new ServoBlaster(1000);
         //assertEquals("0=1000", blaster.setPulseWidth(), "String is not in the proper format");
-    }
+    }*/
 }
