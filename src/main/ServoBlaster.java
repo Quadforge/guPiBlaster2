@@ -11,21 +11,16 @@ public class ServoBlaster {
         GPIO = GpioFactory.getInstance();
         PIN = GPIO.provisionDigitalOutputPin(RaspiPin.GPIO_07, "PinLED", PinState.HIGH);
 
-        Thread.sleep(500);
+        Thread.sleep(1000);
 
         PIN.low();
 
-        Thread.sleep(500);
+        for (int i = 0; i <=3; i++){        // This would make the LED Flash 5 times
 
-        PIN.pulse(500, true);
+            Thread.sleep(1000);
 
-        Thread.sleep(500);
-
-        PIN.pulse(500, true);
-
-        Thread.sleep(500);
-
-        PIN.pulse(500, true);
+            PIN.pulse(1000, true);
+        }
 
         GPIO.shutdown();
     }

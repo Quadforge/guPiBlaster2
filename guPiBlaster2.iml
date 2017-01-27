@@ -22,5 +22,18 @@
         <jarDirectory url="file://$MODULE_DIR$/../pi4j-1.1/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Desktop/intelij/pi4j-1.1/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/Desktop/intelij/pi4j-1.1/lib" />
+        </SOURCES>
+        <jarDirectory url="file://$USER_HOME$/Desktop/intelij/pi4j-1.1/lib" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/Desktop/intelij/pi4j-1.1/lib" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
   </component>
 </module>
