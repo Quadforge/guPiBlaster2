@@ -10,7 +10,7 @@ import main.ServoBlaster;
 public class ServoBlasterTest {
     @Test
     public static void main(String[] a) throws InterruptedException {
-        ServoBlaster blaster = new ServoBlaster(1, 20);
+        ServoBlaster blaster = new ServoBlaster(500);
     }
     /*public void setPulseWidth() throws Exception {
         ServoBlaster blaster = new ServoBlaster(1000);

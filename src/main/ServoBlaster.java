@@ -2,59 +2,42 @@ package main;
 
 import com.pi4j.io.gpio.*;
 
+
 public class ServoBlaster {
 
-    /*public static void main (String[] args) throws InterruptedException {
-        final GpioController GPIO;
-        final GpioPinDigitalOutput PIN;
-
-        GPIO = GpioFactory.getInstance();
-        PIN = GPIO.provisionDigitalOutputPin(RaspiPin.GPIO_07, "PinLED", PinState.HIGH);
-
-        Thread.sleep(500);
-
-        PIN.low();
-
-        for (int i = 0; i <=3; i++){        // This would make the LED Flash 5 times
-
-            Thread.sleep(1000);
-
-            PIN.pulse(1000, true);
-        }
-
-        GPIO.shutdown();
-    }*/
-    private long pulse;
+    private long pulseWidth;
     private long waitTime;
 
-    public ServoBlaster(long pulse, long waitTime) throws InterruptedException {
+    private int[] intervals = {1000, 1100, 1200, 1300, 1400, 1500,
+                                1600, 1700, 1800, 1900, 2000};
+
+    /*public ServoBlaster(long pulseWidth, long waitTime) throws InterruptedException {*/
+    public ServoBlaster(long waitTime) throws InterruptedException {
         final GpioController GPIO;
         final GpioPinDigitalOutput PIN;
 
         GPIO = GpioFactory.getInstance();
         PIN = GPIO.provisionDigitalOutputPin(RaspiPin.GPIO_07, "PinLED", PinState.HIGH);
 
-        //Thread.sleep(waitTime);
-        Thread.sleep(pulse);
+        //PIN.low();
 
-        PIN.low();
-
-        for (int i = 0; i <=100000; i++){        // This would make the LED Flash 5 times
-
-            //Thread.sleep(waitTime);
-            Thread.sleep(pulse);
-
-            PIN.pulse(pulse, true);
+        for (int j = 0; j < intervals.length; j++){                 //This loop use the interval array
+                pulseWidth = intervals[j];                          //setting pulseWidth equal to interval from 0-11, index
+                Thread.sleep(waitTime);                             //Turn off the LED
+                /*System.out.println(pulseWidth/1000.00);*/
+                System.out.println(pulseWidth/1000.00 + " sec");    //To Display the current measure of time which is seconds
+                PIN.pulse(pulseWidth, true);               //Grab the input parameter from ServoBlasterTest, then passes
+                                                                    //though loop.
         }
         GPIO.shutdown();
     }
 
     public void setPulse(long setP){
-        pulse = setP;
+        pulseWidth = setP;
     }
     public long getPulse(long getP){
-        pulse = getP;
-        return this.pulse;
+        pulseWidth = getP;
+        return this.pulseWidth;
     }
     public void setWait(long setW){
         waitTime = setW;
