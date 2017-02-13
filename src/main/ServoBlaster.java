@@ -1,71 +1,52 @@
 package main;
 
-import com.pi4j.io.gpio.*;
-import com.pi4j.io.spi.SpiDevice;
-
+import java.io.IOException;
 
 public class ServoBlaster {
 
-    private long pulseWidth;
-    private long waitTime;
+    int clockSpeed;
+    int pwmRange;
+    int waitTime;
 
-    private double[] intervals = {1, 1.1, 1.2, 1.3, 1.4, 1.5,
-                                1.6, 1.7, 1.8, 1.9, 2};
+    int[] servoPulses = {100, 120, 130, 140, 150, 160,
+                         170, 180, 190, 200};
 
-    /*public ServoBlaster(long pulseWidth, long waitTime) throws InterruptedException {*/
-    public ServoBlaster(long waitTime) throws InterruptedException {
-        final GpioController GPIO;
-        final GpioPinDigitalOutput PIN;
+    public ServoBlaster(int clockSpeed, int pwmRange, int waitTime) throws IOException, InterruptedException {
+        Runtime runTime = Runtime.getRuntime();
+        runTime.exec("gpio mode 1 pwm");
+        runTime.exec("gpio pwm-ms");
+        runTime.exec("gpio pwmc " + clockSpeed);
+        runTime.exec("gpio pwmr " + pwmRange);
+        runTime.exec("gpio pwm 1 " + servoPulses[5]);
 
-
-        GPIO = GpioFactory.getInstance();
-        PIN = GPIO.provisionDigitalOutputPin(RaspiPin.GPIO_01, "PinLED", PinState.HIGH);
-
-
-        PIN.low();
-
-        /*for (int j = 0; j < intervals.length; j++){                 //This loop use the interval array
-                pulseWidth = (long) intervals[j];                          //setting pulseWidth equal to interval from 0-11, index
-                Thread.sleep(waitTime);                             //Turn off the LED
-                //System.out.println(pulseWidth/1000.00);
-                System.out.println(pulseWidth/1000.00 + " sec");    //To Display the current measure of time which is seconds
-                PIN.pulse(pulseWidth, true);               //Grab the input parameter from ServoBlasterTest, then passes
-                PIN.low();                                                    //though loop.
-                Thread.sleep(waitTime);
-        }*/
-        for (int i = 1; i < 5; i ++) {
-
-
-            /*PIN.high();
-            Thread.sleep((long) 1.0);
-            PIN.low();
-            Thread.sleep(1000);*/
-
-            PIN.high();
-            Thread.sleep((long) 0.15);
-            PIN.low();
-            Thread.sleep(1000);
-
-            /*PIN.high();
-            Thread.sleep((long) 2.0);
-            PIN.low();
-            Thread.sleep(1000);*/
-        }
-        GPIO.shutdown();
+        Thread.sleep(waitTime);
+        runTime.exec("gpio pwm 1 " + servoPulses[0]);
+        Thread.sleep(waitTime);
+        runTime.exec("gpio pwm 1 " + servoPulses[9]);
+        Thread.sleep(waitTime);
     }
 
-    public void setPulse(long setP){
-        pulseWidth = setP;
+
+    public void setClockSpeed(int setCS){
+        clockSpeed = setCS;
     }
-    public long getPulse(long getP){
-        pulseWidth = getP;
-        return this.pulseWidth;
+    public void setPwmRange(int setPWMR){
+        pwmRange = setPWMR;
     }
-    public void setWait(long setW){
-        waitTime = setW;
+    public void setWaitTime(int setWT){
+        waitTime = setWT;
     }
-    public long getWait(long getW){
-        waitTime = getW;
-        return this.waitTime;
+    public int getClockSpeed(int getCS){
+        clockSpeed = getCS;
+        return clockSpeed;
     }
+    public int getPwmRange(int getPWMR){
+        pwmRange = getPWMR;
+        return  getPWMR;
+    }
+    public int getWaitTime(int getWT){
+        waitTime = getWT;
+        return waitTime;
+    }
+
 }
