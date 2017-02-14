@@ -13,18 +13,18 @@ public class ServoBlaster {
 
     public ServoBlaster(int clockSpeed, int pwmRange, int waitTime) throws IOException, InterruptedException {
         Runtime runTime = Runtime.getRuntime();
-        runTime.exec("gpio mode 1 pwm");
-        runTime.exec("gpio pwm-ms");
-        runTime.exec("gpio pwmc " + clockSpeed);
-        runTime.exec("gpio pwmr " + pwmRange);
-        runTime.exec("gpio pwm 1 " + servoPulses[5]);
+        runTime.exec("gpio mode 1 pwm");                //This would set WiringPi PWM to PIN01 or GPIO 12
+        runTime.exec("gpio pwm-ms");                    //This would create a mark space
+        runTime.exec("gpio pwmc " + clockSpeed);        //This would instruct WiringPi to set a PWM Clock Speed
+        runTime.exec("gpio pwmr " + pwmRange);          //This would instruct WiringPi to set Range
+        runTime.exec("gpio pwm 1 " + servoPulses[5]);   //This instruct WiringPi to set the Servo to turn in 90 degree
 
         Thread.sleep(waitTime);
-        runTime.exec("gpio pwm 1 " + servoPulses[0]);
+        runTime.exec("gpio pwm 1 " + servoPulses[0]);   //This instruct WiringPi to set the Servo to turn in "0" degree
         Thread.sleep(waitTime);
-        runTime.exec("gpio pwm 1 " + servoPulses[9]);
+        runTime.exec("gpio pwm 1 " + servoPulses[9]);   //This instruct WiringPi to set the Servo to turn in "180" degree
         Thread.sleep(waitTime);
-        runTime.exec("gpio pwm 1 " + servoPulses[5]);
+        runTime.exec("gpio pwm 1 " + servoPulses[5]);   //This instruct WiringPi to set the Servo to turn it back to 90 degree
     }
 
 
