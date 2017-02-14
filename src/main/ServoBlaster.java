@@ -24,6 +24,7 @@ public class ServoBlaster {
         Thread.sleep(waitTime);
         runTime.exec("gpio pwm 1 " + servoPulses[9]);
         Thread.sleep(waitTime);
+        runTime.exec("gpio pwm 1 " + servoPulses[5]);
     }
 
 
