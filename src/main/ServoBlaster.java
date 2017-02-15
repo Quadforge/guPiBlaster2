@@ -4,6 +4,8 @@ import java.io.IOException;
 
 public class ServoBlaster {
 
+    String GpioPWM = "gpio pwm 1 ";
+
     int clockSpeed;
     int pwmRange;
     int waitTime;
@@ -17,16 +19,39 @@ public class ServoBlaster {
         runTime.exec("gpio pwm-ms");                    //This would create a mark space
         runTime.exec("gpio pwmc " + clockSpeed);        //This would instruct WiringPi to set a PWM Clock Speed
         runTime.exec("gpio pwmr " + pwmRange);          //This would instruct WiringPi to set Range
-        runTime.exec("gpio pwm 1 " + servoPulses[0]);   //This instruct WiringPi to set the Servo to turn in 90 degree
+        runTime.exec(GpioPWM + servoPulses[0]);   //This instruct WiringPi to set the Servo to turn in 90 degree
 
         Thread.sleep(waitTime);
-        runTime.exec("gpio pwm 1 " + servoPulses[4]);   //This instruct WiringPi to set the Servo to turn in "0" degree
+        runTime.exec(GpioPWM + servoPulses[4]);   //This instruct WiringPi to set the Servo to turn in "0" degree
         Thread.sleep(waitTime);
-        runTime.exec("gpio pwm 1 " + servoPulses[9]);   //This instruct WiringPi to set the Servo to turn in "180" degree
+        runTime.exec(GpioPWM + servoPulses[9]);   //This instruct WiringPi to set the Servo to turn in "180" degree
         Thread.sleep(waitTime);
-        runTime.exec("gpio pwm 1 " + servoPulses[0]);   //This instruct WiringPi to set the Servo to turn it back to 0 degree
+        runTime.exec(GpioPWM + servoPulses[0]);   //This instruct WiringPi to set the Servo to turn it back to 0 degree
         Thread.sleep(waitTime);
-        runTime.exec("gpio pwm 1 " + servoPulses[9]);
+        runTime.exec(GpioPWM + servoPulses[9]);
+        Thread.sleep(waitTime);
+
+        runTime.exec(GpioPWM + servoPulses[0]);
+        Thread.sleep(waitTime);
+        runTime.exec(GpioPWM + servoPulses[1]);
+        Thread.sleep(waitTime);
+        runTime.exec(GpioPWM + servoPulses[2]);
+        Thread.sleep(waitTime);
+        runTime.exec(GpioPWM + servoPulses[3]);
+        Thread.sleep(waitTime);
+        runTime.exec(GpioPWM + servoPulses[4]);
+        Thread.sleep(waitTime);
+        runTime.exec(GpioPWM + servoPulses[5]);
+        Thread.sleep(waitTime);
+        runTime.exec(GpioPWM + servoPulses[6]);
+        Thread.sleep(waitTime);
+        runTime.exec(GpioPWM + servoPulses[7]);
+        Thread.sleep(waitTime);
+        runTime.exec(GpioPWM + servoPulses[8]);
+        Thread.sleep(waitTime);
+        runTime.exec(GpioPWM + servoPulses[9]);
+        Thread.sleep(waitTime);
+        runTime.exec(GpioPWM + servoPulses[0]);
     }
 
 
