@@ -20,16 +20,16 @@ public class ServoBlaster {
         runTime.exec("gpio pwm-ms");                    //This would create a mark space
         runTime.exec("gpio pwmc " + clockSpeed);        //This would instruct WiringPi to set a PWM Clock Speed
         runTime.exec("gpio pwmr " + pwmRange);          //This would instruct WiringPi to set Range
-        runTime.exec(GpioPWM + servoPulses[0]);   //This instruct WiringPi to set the Servo to turn in 90 degree
+        runTime.exec(GpioPWM + servoPulses[14]);        //This instruct WiringPi to set the Servo to turn in 180 degree
 
         Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[4]);   //This instruct WiringPi to set the Servo to turn in "0" degree
+        runTime.exec(GpioPWM + servoPulses[0]);   //This instruct WiringPi to set the Servo to turn in "0" degree
         Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[9]);   //This instruct WiringPi to set the Servo to turn in "180" degree
+        runTime.exec(GpioPWM + servoPulses[14]);   //This instruct WiringPi to set the Servo to turn in "180" degree
         Thread.sleep(waitTime);
         runTime.exec(GpioPWM + servoPulses[0]);   //This instruct WiringPi to set the Servo to turn it back to 0 degree
         Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[9]);
+        runTime.exec(GpioPWM + servoPulses[14]);
         Thread.sleep(waitTime);
 
         for (int cycle = 0; cycle <= 10; cycle++){
