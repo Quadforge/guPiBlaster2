@@ -31,27 +31,31 @@ public class ServoBlaster {
         runTime.exec(GpioPWM + servoPulses[9]);
         Thread.sleep(waitTime);
 
-        runTime.exec(GpioPWM + servoPulses[0]);
-        Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[1]);
-        Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[2]);
-        Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[3]);
-        Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[4]);
-        Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[5]);
-        Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[6]);
-        Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[7]);
-        Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[8]);
-        Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[9]);
-        Thread.sleep(waitTime);
-        runTime.exec(GpioPWM + servoPulses[0]);
+        for (int cycle = 0; cycle <= 10; cycle++){
+            if (cycle == 10)
+                break;
+            runTime.exec(GpioPWM + servoPulses[0]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[1]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[2]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[3]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[4]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[5]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[6]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[7]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[8]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[9]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[0]);
+        }
     }
 
 
