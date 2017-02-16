@@ -9,9 +9,10 @@ public class ServoBlaster {
     int clockSpeed;
     int pwmRange;
     int waitTime;
-
-    int[] servoPulses = {80, 120, 130, 140, 150, 160,
-                         170, 180, 190, 220};
+                      // 0   1    2    3    4    5    6
+    int[] servoPulses = {80, 90, 100, 110, 120, 130, 140,
+                      // 7    8    9   10   11    12   13   14
+                        150, 160, 170, 180, 190, 200, 210, 220};
 
     public ServoBlaster(int clockSpeed, int pwmRange, int waitTime) throws IOException, InterruptedException {
         Runtime runTime = Runtime.getRuntime();
@@ -32,7 +33,7 @@ public class ServoBlaster {
         Thread.sleep(waitTime);
 
         for (int cycle = 0; cycle <= 10; cycle++){
-            if (cycle == 10)
+            if (cycle == 5)
                 break;
             runTime.exec(GpioPWM + servoPulses[0]);
             Thread.sleep(waitTime);
@@ -54,7 +55,18 @@ public class ServoBlaster {
             Thread.sleep(waitTime);
             runTime.exec(GpioPWM + servoPulses[9]);
             Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[10]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[11]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[12]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[13]);
+            Thread.sleep(waitTime);
+            runTime.exec(GpioPWM + servoPulses[14]);
+            Thread.sleep(waitTime);
             runTime.exec(GpioPWM + servoPulses[0]);
+            Thread.sleep(waitTime);
         }
     }
 
