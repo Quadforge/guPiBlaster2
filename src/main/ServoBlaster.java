@@ -16,7 +16,7 @@ public class ServoBlaster {
 
             for (int pulse = 0; pulse <= 100; pulse+=10){                 //Goes through the array of pulses
                 try {
-                    File file = new File(seroBlasterDir);
+                    File file = new File(servoBlasterDir);
                     PrintWriter printWriter = new PrintWriter(file);
                     printWriter.println("0=" + servoPulses[0]);
                     printWriter.println("0=" + servoPulses[1]);
