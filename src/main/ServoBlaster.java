@@ -1,44 +1,64 @@
 package main;
+import java.awt.*;
 import java.io.PrintWriter;
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class ServoBlaster {
-  
-    private String servoBlasterDir = "/dev/servoblaster"; 
-                      // 0   1    2    3    4    5    6
-    int[] servoPulses = {80, 90, 100, 110, 120, 130, 140,
-                      // 7    8    9   10   11    12   13   14
-                        150, 160, 170, 180, 190, 200, 210, 220};
+    Toolkit toolkit;
+    Timer timer;
 
-        public void servoB(){
+        /*
+        public void startServod(){
+        // code meant to start servod at startup
+        // we have edited the script manually, hoping for help in the future with this part
+        }
+        */
 
-            for (int pulse = 0; pulse <= 100; pulse+=10){                 //Goes through the array of pulses
+    // Allows user to input pulsewidth
+    public void userRun(int userPulse){
+        try {
+            File file = new File("/dev/servoblaster");
+            PrintWriter printWriter = new PrintWriter(file);
+            printWriter.println("2=" + userPulse + "us");
+            printWriter.close();
+        }catch (IOException ex){
+            System.out.println("/dev file not found");
+        }
+    }
+
+    //Manuallly sets servoblaster to run through pulse width 1 to 2 ms
+    public void autoRun() {
+        timer = new Timer();
+        timer.schedule(new Task1(),
+                0,        //initial delay
+                5*1000);  //subsequent rate
+    }
+
+    class Task1 extends TimerTask {
+        double servoPulse = 0;
+
+        //uses timertask to write new increment of pulsewidth every 5 seconds
+        public void run() {
+            servoPulse++;
+            if (servoPulse < 10) {
+                double pulse = (1+servoPulse/10)*1000;
+                int pulse1 = (int)pulse;
                 try {
-                    File file = new File(servoBlasterDir);
+                    File file = new File("/dev/servoblaster");
                     PrintWriter printWriter = new PrintWriter(file);
-                    printWriter.println("0=" + servoPulses[0]);
-                    printWriter.println("0=" + servoPulses[1]);
-                    printWriter.println("0=" + servoPulses[2]);
-                    printWriter.println("0=" + servoPulses[3]);
-                    printWriter.println("0=" + servoPulses[4]);
-                    printWriter.println("0=" + servoPulses[5]);
-                    printWriter.println("0=" + servoPulses[6]);
-                    printWriter.println("0=" + servoPulses[7]);
-                    printWriter.println("0=" + servoPulses[8]);
-                    printWriter.println("0=" + servoPulses[9]);
-                    printWriter.println("0=" + servoPulses[10]);
-                    printWriter.println("0=" + servoPulses[11]);
-                    printWriter.println("0=" + servoPulses[12]);
-                    printWriter.println("0=" + servoPulses[13]);
-                    printWriter.println("0=" + servoPulses[14]);
+                    printWriter.println("2=" + pulse1 + "us");
                     printWriter.close();
-
-                } catch (IOException ex) {
-                    System.out.println(ex.toString());
-                    System.out.println("Could not find /dev/servoblaster");
+                }catch (IOException ex) {
+                    System.out.println("/dev file not found");
                 }
+
+            } else {
+                timer.cancel();
             }
         }
     }
+}

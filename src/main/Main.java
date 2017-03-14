@@ -7,7 +7,9 @@ public class Main {
 //      //  ServoBlaster blaster = new ServoBlaster(192, 2000, 5000);
 //         ServoBlaster2 blaster = new ServoBlaster2(192, 2000, 400);
          ServoBlaster blaster = new ServoBlaster();
-         blaster.servoB();
+         blaster.autoRun();
+         //blaster.userRun(1200);
+
 
     }
 }
