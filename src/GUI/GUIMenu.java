@@ -71,12 +71,14 @@ public class GUIMenu extends JPanel {
             }
         }
 
+        //makes the actionlisteners a variable
         ActionListener upButtonListener = new AddUpButtonListener();
         ActionListener downButtonListener = new AddDownButtonListener();
         ActionListener autoButtonListener = new AddAutoButtonListener();
         ActionListener manButtonListener = new AddManButtonListener();
         ActionListener exitButtonListener = new AddExitButtonListener();
 
+        //add the listeners to the panel
         //arrowpanel.getUpbutton().addActionListener(upButtonListener);
         //arrowpanel.getDownbutton().addActionListener(downButtonListener);
         exitpanel.getExitbutton().addActionListener(exitButtonListener);
