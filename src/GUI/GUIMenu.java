@@ -14,18 +14,26 @@ public class GUIMenu extends JPanel {
     private GUIPanels voltagetext;
     private GUIPanels temptext;
     private GUIPanels forcetext;
+    //the called panels from each file
 
     public GUIMenu(){
 
+        //creates the panels for the project
         arrowpanel = new GUIArrows();
         exitpanel = new GUIExit();
         ampanel = new GUIAM();
+        currenttext = new GUIPanels();
+        voltagetext = new GUIPanels();
+        temptext = new GUIPanels();
+        forcetext = new GUIPanels();
 
+        //creates the methods for the file
         addActionListener();
         addToPanel();
 
     }
 
+    //creates the actionlisteners for the buttons
     public void addActionListener(){
 
         class AddUpButtonListener implements ActionListener{
@@ -84,10 +92,10 @@ public class GUIMenu extends JPanel {
         //add(arrowpanel.getDownbutton());
         add(exitpanel.getExitpanel(), BorderLayout.EAST);
         add(ampanel.getAmpanel());
-        //add(currenttext.getCurrenttext());
-        //add(voltagetext.getVoltagetext());
-        //add(temptext.getTemptext());
-        //add(forcetext.getForcetext());
+        add(currenttext.getCurrenttext());
+        add(voltagetext.getVoltagetext());
+        add(temptext.getTemptext());
+        add(forcetext.getForcetext());
 
     }
 }
