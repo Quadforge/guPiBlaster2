@@ -18,7 +18,7 @@ public class GUIExit {
         //makes the panel a global variable
         exitpanel.setLayout(new BorderLayout());
 
-        ImageIcon closebt = new ImageIcon("/home/otakusenseihig/IdeaProjects/TestingFeatures/closebt.png");
+        ImageIcon closebt = new ImageIcon("enter closebt.png location here");
         //imports picture for the exitbutton
         exitbutton = new JButton(closebt);
         //makes the exitbutton a global variable and imports image
