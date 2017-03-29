@@ -34,7 +34,7 @@ public class GUIArrows {
         //creates the inner class, and makes actionlistener a variable
         GridBagConstraints gbc = new GridBagConstraints();
         //creates the gridbagconstraints to be used
-        ImageIcon upArrow = new ImageIcon("/home/otakusenseihig/IdeaProjects/TestingFeatures/upArrow.png");
+        ImageIcon upArrow = new ImageIcon("enter upArrow.png location here");
         //adds an image to the upbutton
 
         upbutton = new JButton(upArrow);
@@ -66,7 +66,7 @@ public class GUIArrows {
         //creates the inner class, and makes actionlistener a variable
         GridBagConstraints gbc = new GridBagConstraints();
         //creates the gridbagconstraints to be used
-        ImageIcon downArrow = new ImageIcon("/home/otakusenseihig/IdeaProjects/TestingFeatures/downArrow.png");
+        ImageIcon downArrow = new ImageIcon("enter downArrow.png location here");
         //adds an image to the downbutton
 
         downbutton = new JButton(downArrow);
