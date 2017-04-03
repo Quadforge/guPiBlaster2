@@ -1,5 +1,3 @@
-package main;
-
 import java.io.IOException;
 
 public class ServoBlaster2 {
@@ -9,7 +7,7 @@ public class ServoBlaster2 {
     int clockSpeed;
     int pwmRange;
     int waitTime;
-    // 0   1    2    3    4    5    6
+                       // 0   1    2    3    4    5    6
     int[] servoPulses = {80, 90, 100, 110, 120, 130, 140,
             // 7    8    9   10   11    12   13   14
             150, 160, 170, 180, 190, 200, 210, 220};

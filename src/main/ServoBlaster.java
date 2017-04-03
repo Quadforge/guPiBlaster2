@@ -35,7 +35,7 @@ public class ServoBlaster {
         timer = new Timer();
         timer.schedule(new Task1(),
                 0,        //initial delay
-                5*1000);  //subsequent rate
+                1*1000);  //subsequent rate
     }
 
     class Task1 extends TimerTask {
@@ -45,7 +45,7 @@ public class ServoBlaster {
         public void run() {
             servoPulse++;
             if (servoPulse < 10) {
-                double pulse = (1+servoPulse/10)*1000;
+                double pulse = (0+servoPulse/10)*1000;
                 int pulse1 = (int)pulse;
                 try {
                     File file = new File("/dev/servoblaster");
