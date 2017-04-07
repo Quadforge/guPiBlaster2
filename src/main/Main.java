@@ -1,6 +1,7 @@
 package main;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] a) throws InterruptedException, IOException {
@@ -11,6 +12,12 @@ public class Main {
          //blaster.userRun(1200);
          //blaster.userRun(900);
         ServoBlaster3 blaster = new ServoBlaster3();
+        blaster.automatic();
+       /* boolean isRunning = false;
+
+        while (isRunning = true){
+            System.out.println("");
+        }
         for (int i = 0; i <= 3; i++){
             if (i == 3)
                 blaster.initialPulse();
@@ -19,6 +26,6 @@ public class Main {
         }
         //blaster.initialPulse();
 
-
+*/
     }
 }
