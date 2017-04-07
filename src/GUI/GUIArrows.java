@@ -7,109 +7,153 @@ import java.awt.event.ActionListener;
  * Created by NkemOhanenye on 3/24/17.
  */
 public class GUIArrows {
-
-    //makes the JButton variables global
-    private JButton upbutton;
-    private JButton downbutton;
-    //makes the JPanel global variables
+    /**
+     * makes the JPanel global variables
+     */
     private JPanel arrowpanel;
+    /**
+     * makes the JButton variables global
+     */
+    private JButton upButton;
+    private JButton downButton;
+    /**
+     * creates the Incrementer double variable
+     */
     private double incrementer = 1.0;
-    ///creates the Incrementer double variable
+
+    private JLabel incrtbox;
 
     public GUIArrows() {
-        //UpArrow();
-        //DownArrow();
+        /**
+         * @Methods make new methods
+         */
+        UpArrow();
+        DownArrow();
 
-        arrowpanel = new JPanel(); //creates second JPanel for the arrows
-        arrowpanel.setLayout(new GridBagLayout());
-        //gives button GridBagLayout
+        /**
+         * creates second JPanel for the arrows
+         */
+        arrowpanel = new JPanel();
 
+        /**
+         * the text to be displayed on the screen
+         */
+        incrtbox = new JLabel(incrementer + " ms");
+        Font myFont = new Font("Dialog", Font.BOLD, 20);
+        incrtbox.setFont(myFont);
+        incrtbox.setForeground(Color.black);
+        /**
+         * gives the arrowpanel the specified layout
+         */
+        arrowpanel.setLayout(new FlowLayout(FlowLayout.RIGHT,10,550));
+
+        arrowpanel.add(upButton);
+        arrowpanel.add(downButton);
+        arrowpanel.add(incrtbox);
+
+        /**
+         * removes the default panel background
+         */
         arrowpanel.setBackground(null);
-        //removes the default panel background
 
     }
 
     public void UpArrow(){
-        ServoIncrt pulseWidth = new ServoIncrt();
-        //creates the inner class, and makes actionlistener a variable
-        GridBagConstraints gbc = new GridBagConstraints();
-        //creates the gridbagconstraints to be used
+        /**
+         * makes the inner class ServoIncrt a variable
+         */
+        ServoIncrt listener = new ServoIncrt();
+        /**
+         * adds an image to the upbutton
+         */
         ImageIcon upArrow = new ImageIcon("enter upArrow.png location here");
-        //adds an image to the upbutton
+        /**
+         * makes upbutton a global variable
+         */
+        upButton = new JButton(upArrow);
 
-        upbutton = new JButton(upArrow);
-        //makes upbutton a global variable
-        upbutton.addActionListener(pulseWidth);
+        /**
+         * makes upButton be added to the listener
+         */
+        upButton.addActionListener(listener);
 
-        upbutton.setBorder(BorderFactory.createEmptyBorder());
-        //removes the border of upbutton
-        upbutton.setContentAreaFilled(false);
-        //removes the area around the button
+        /**
+         * removes the border of upbutton
+         */
+        upButton.setBorder(BorderFactory.createEmptyBorder());
+        /**
+         * removes the area around the button
+         */
+        upButton.setContentAreaFilled(false);
 
-        gbc.weightx = 1;
-        //extends the horizontal weight
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        //sends the upbutton to coordinates (0, 0)
-        gbc.insets = new Insets(0, 0, 0, 0);
-        //Insets (top, left, bottom, right);
-        //seperates from the left side by 100 and the bottom by 50
-        gbc.anchor = GridBagConstraints.LINE_END;
-        //moves the upbutton to the left most of the frame
-
-        arrowpanel.add(upbutton, gbc);
-        //implements the upbutton and gbc to the panel
     }
 
     public void DownArrow(){
-        ServoIncrt pulseWidth = new ServoIncrt();
-        //creates the inner class, and makes actionlistener a variable
-        GridBagConstraints gbc = new GridBagConstraints();
-        //creates the gridbagconstraints to be used
+        /**
+         * makes the inner class ServoIncrt a variable
+         */
+        ServoIncrt listener = new ServoIncrt();
+        /**
+         * adds an image to the downbutton
+         */
         ImageIcon downArrow = new ImageIcon("enter downArrow.png location here");
-        //adds an image to the downbutton
+        /**
+         * makes downbutton a global variable
+         */
+        downButton = new JButton(downArrow);
+        /**
+         * lets the downButton communicate with the listener
+         */
+        downButton.addActionListener(listener);
+        /**
+         * removes the border of downbutton
+         */
+        downButton.setBorder(BorderFactory.createEmptyBorder());
+        /**
+         * removes the area around the button
+         */
+        downButton.setContentAreaFilled(false);
 
-        downbutton = new JButton(downArrow);
-        //makes downbutton a global variable
-        downbutton.addActionListener(pulseWidth);
-
-        downbutton.setBorder(BorderFactory.createEmptyBorder());
-        //removes the border of upbutton
-        downbutton.setContentAreaFilled(false);
-        //removes the area around the button
-
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        //sends the downbutton to coordinates (0,1)
-        gbc.anchor = GridBagConstraints.LINE_START;
-        //moves the downbutton to the left most of the frame
-
-        arrowpanel.add(downbutton, gbc);
-        //implementes the downbutton and gbc to the panel
     }
 
+    /**
+     * the inner class ServoIncrt
+     * increments ActionListener
+     */
     public class ServoIncrt implements ActionListener {
-        //creates an inner class that implements ActionListener
-
+        /**
+         * creates the actionPerformed method
+         */
         public void actionPerformed(ActionEvent e) {
-            //creates the actionPerformed method
-
-            if (e.getSource() == upbutton && incrementer <= 2.0) {
-                //conditional if upbutton is clicked and limit is less or equal to 2
+            /**
+             * conditional if upbutton is clicked and limit is less or equal to 2
+             */
+            if (e.getSource() == upButton && incrementer <= 2.0) {
+                /**
+                 * increments + .1
+                 */
                 incrementer += 0.1;
-                //increments + .1
+                /**
+                 * @param Math.floor rounds the output of adding .1 down
+                 */
                 if (Math.floor(incrementer) == 2.0) {
-                    //@param Math.floor rounds the output of adding .1 down
-                    upbutton.setText("MAX");
+
+                    upButton.setText("MAX");
                 }
             }
-            if (e.getSource() == downbutton && incrementer >= 1.0) {
-                //conditional if downbutton is clicked and limit is greater or equal to 1
+            /**
+             * conditional if downButton is clicked and limit is greater or equal to 1
+             */
+            if (e.getSource() == downButton && incrementer >= 1.0) {
+                /**
+                 * increments - .1
+                 */
                 incrementer -= 0.1;
-                //increments - .1
+                /**
+                 * @param Math.ceil rounds number up with .1
+                 */
                 if (Math.ceil(incrementer) == 1.0) {
-                    //Math.ceil rounds number up
-                    downbutton.setText("MAX");
+                    downButton.setText("MAX");
                 }
             }
         }
@@ -118,12 +162,12 @@ public class GUIArrows {
      * returns the JButton
      * @return creates the upbutton
      */
-    public JButton getUpbutton() {return upbutton;}
+    public JButton getUpbutton() {return upButton;}
     /**
      * returns the JButton
      * @return creates the downbutton
      */
-    public JButton getDownbutton() {return downbutton;}
+    public JButton getDownbutton() {return downButton;}
     /**
      * returns the arrowpanel
      * @return Arrowpanel the arrowpanel. It contains these JButtons

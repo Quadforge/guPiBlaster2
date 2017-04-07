@@ -1,14 +1,43 @@
 /**
  * Created by NkemOhanenye on 3/24/17.
  */
-public class GUIBox {
+public class GUITxT {
+    /**
+     * creates the variables to be used in GUIPanels
+     */
     private double current = 0;
     private int voltage = 0;
     private int temp = 0;
     private double force = 0;
 
-    public GUIBox(){
-
+    public GUITxT(){
+        /**
+         * Place code here
+         */
+        currentcode();
+        voltagecode();
+        tempcode();
+        forcecode();
+    }
+    public void currentcode(){
+        /**
+         * Place code here
+         */
+    }
+    public void voltagecode(){
+        /**
+         * Place code here
+         */
+    }
+    public void tempcode(){
+        /**
+         * Place code here
+         */
+    }
+    public void forcecode(){
+        /**
+         * Place code here
+         */
     }
     /**
      * returns the double

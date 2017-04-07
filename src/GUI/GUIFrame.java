@@ -10,20 +10,45 @@ public class GUIFrame {
     public static void main(String args[]){
         JFrame frame = new JFrame();
 
-        //colors the background red
+        /**
+         * colors the background red
+         */
         frame.getContentPane().setBackground(Color.red.darker().darker().darker());
-        //removes window bar
+        /**
+         * removes window bar
+         */
         frame.setUndecorated(true);
-        //sets fullscreen and removes taskbar
+        /**
+         * sets fullscreen and removes taskbar
+         */
         GraphicsEnvironment.getLocalGraphicsEnvironment().
                 getDefaultScreenDevice().setFullScreenWindow(frame);
+        /**
+         * on the off chance the screen is messed with, it cant be resized
+         */
+        frame.setResizable(false);
 
+        /**
+         * calls the GUIMenu file
+         */
         GUIMenu guimenu = new GUIMenu();
+        /**
+         * adds the guimenu to the frame
+         */
         frame.add(guimenu);
+        /**
+         * removes the guimenu background
+         */
+        guimenu.setBackground(null);
 
-        //closes program upon clicking x button
+        /**
+         * closes program upon clicking x button
+         */
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //makes the program visible
+
+        /**
+         * makes the program visible
+         */
         frame.setVisible(true);
     }
 }
