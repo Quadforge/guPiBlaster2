@@ -5,99 +5,79 @@ import java.awt.*;
  * Created by NkemOhanenye on 3/24/17.
  */
 public class GUIPanels {
+    /**
+     * creates the panels
+     */
+    private JPanel datapanel;
+    private JPanel curt;
+    private JPanel volts;
+    private JPanel temp;
+    private JPanel force;
 
-    private GUIArrows arrowpanel;
-    private JPanel currenttext;
-    private JPanel voltagetext;
-    private JPanel temptext;
-    private JPanel forcetext;
-
-    private JLabel incrt;
+    /**
+     * creates the labels
+     */
     private JLabel currentbox;
     private JLabel voltagebox;
     private JLabel tempbox;
     private JLabel forcebox;
 
     public GUIPanels(){
-        //imports the variables from each class
-        GUIArrows idk = new GUIArrows();
-        GUIBox idk2 = new GUIBox();
-        Font myFont = new Font("Dialog", Font.BOLD, 25);
+        /**
+         * imports the variables from each class
+         */
+        GUITxT printVar = new GUITxT();
+        Font myFont = new Font("Dialog", Font.BOLD, 20);
 
-        //the text to be displayed on the screen
-        incrt = new JLabel(idk.getIncrementer() + " ms");
-        incrt.setFont(myFont);
-        incrt.setForeground(Color.black);
-        currentbox = new JLabel("Current: " + idk2.getCurrent() + "/amps");
+        /**
+         * the text to be displayed on the screen
+         */
+        currentbox = new JLabel("Current: " + printVar.getCurrent() + "/amps");
         currentbox.setFont(myFont);
         currentbox.setForeground(Color.black);
-        voltagebox = new JLabel("Voltage: " + idk2.getVoltage() + "/volts");
+        voltagebox = new JLabel("Voltage: " + printVar.getVoltage() + "/volts");
         voltagebox.setFont(myFont);
         voltagebox.setForeground(Color.black);
-        tempbox = new JLabel("Temperature: " + idk2.getTemp() + "°C");
+        tempbox = new JLabel("Temperature: " + printVar.getTemp() + "°C");
         tempbox.setFont(myFont);
         tempbox.setForeground(Color.black);
-        forcebox = new JLabel("Force: " + idk2.getForce() + " N");
+        forcebox = new JLabel("Force: " + printVar.getForce() + " N");
         forcebox.setFont(myFont);
         forcebox.setForeground(Color.black);
 
-        //activates gridbag placement variables
-        GridBagConstraints gbc = new GridBagConstraints();
-        GridBagConstraints gbc2 = new GridBagConstraints();
+        curt = new JPanel();
+        curt.setBackground(null);
+        curt.setBorder(BorderFactory.createLineBorder(Color.black));
+        volts = new JPanel();
+        volts.setBackground(null);
+        volts.setBorder(BorderFactory.createLineBorder(Color.black));
+        temp = new JPanel();
+        temp.setBackground(null);
+        temp.setBorder(BorderFactory.createLineBorder(Color.black));
+        force = new JPanel();
+        force.setBackground(null);
+        force.setBorder(BorderFactory.createLineBorder(Color.black));
 
-        arrowpanel = new GUIArrows();
+        datapanel = new JPanel();
+        datapanel.setLayout(new GridLayout(4, 2, 5, 5));
 
-        arrowpanel.getArrowpanel().add(incrt);
+        datapanel.add(curt);
+        datapanel.add(currentbox);
 
-        currenttext.setLayout(new GridBagLayout());
-        currenttext = new JPanel();
+        datapanel.add(volts);
+        datapanel.add(voltagebox);
 
-        gbc.weighty = 1;
+        datapanel.add(temp);
+        datapanel.add(tempbox);
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
+        datapanel.add(force);
+        datapanel.add(forcebox);
 
-        currenttext.add(currentbox, gbc);
-
-        voltagetext.setLayout(new GridBagLayout());
-        voltagetext = new JPanel();
-
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-
-        voltagetext.add(voltagebox, gbc);
-
-        temptext.setLayout(new GridBagLayout());
-        temptext = new JPanel();
-
-        gbc2.gridx = 0;
-        gbc2.gridy = 0;
-
-        temptext.add(tempbox, gbc2);
-
-        forcetext.setLayout(new GridBagLayout());
-        forcetext = new JPanel();
-
-        gbc2.gridx = 0;
-        gbc2.gridy = 0;
-
-        forcetext.add(forcebox, gbc2);
+        datapanel.setBackground(null);
 
     }
-    /**returns the currenttext
-     * @return Currenttext contains the currenttext
+    /**returns the datapanel
+     * @return Datapanel contains the datapanel
      */
-    public JPanel getCurrenttext(){return currenttext;}
-    /**returns the voltagetext
-     * @return Voltagetext contains the voltagetext
-     */
-    public JPanel getVoltagetext(){return voltagetext;}
-    /**returns the temptext
-     * @return Temptext contains the temptext
-     */
-    public JPanel getTemptext(){return temptext;}
-    /**returns the forcetext
-     * @return Forcetext contains the forcetext
-     */
-    public JPanel getForcetext(){return forcetext;}
+    public JPanel getDatapanel(){return datapanel;}
 }

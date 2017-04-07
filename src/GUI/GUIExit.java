@@ -6,7 +6,13 @@ import java.awt.*;
  */
 public class GUIExit {
 
+    /**
+     * creates the exitpanel
+     */
     private JPanel exitpanel;
+    /**
+     * creates the exitbutton
+     */
     private JButton exitbutton;
 
     public GUIExit(){
@@ -14,31 +20,58 @@ public class GUIExit {
     }
 
     public void ExitButton(){
+        /**
+         * makes the panel a global variable
+         */
         exitpanel = new JPanel();
-        //makes the panel a global variable
+        /**
+         * sets the layout of the panel
+         */
         exitpanel.setLayout(new BorderLayout());
 
-        ImageIcon closebt = new ImageIcon("enter closebt.png location here");
-        //imports picture for the exitbutton
-        exitbutton = new JButton(closebt);
-        //makes the exitbutton a global variable and imports image
-        exitbutton.addActionListener(e -> exitButtonClick());
-        //makes exit button activate a shorter version of actionlistener (lambda)
+        /**
+         * imports picture for the exitbutton
+         */
+        ImageIcon closeBt = new ImageIcon("enter closebt.png location here");
+        /**
+         * makes the exitbutton a global variable and imports image
+         */
+        exitbutton = new JButton(closeBt);
 
+        /**
+         * makes exitbutton activate a shorter version of actionlistener (lambda)
+         */
+        exitbutton.addActionListener(e -> ExitbuttonClick());
+
+        /**
+         * removes the exitbutton border
+         */
         exitbutton.setBorder(BorderFactory.createEmptyBorder());
-        //removes the exitbutton border
+        /**
+         * removes the border and area around the button
+         */
         exitbutton.setContentAreaFilled(false);
-        //removes the border and area around the button
 
+        /**
+         * adds button to panel and the borderlayout north
+         */
         exitpanel.add(exitbutton, BorderLayout.NORTH);
-        //adds button to panel and the borderlayout north
+        /**
+         * removes the default panel button
+         */
         exitpanel.setBackground(null);
-        //removes the default panel button
-    }
 
-    void exitButtonClick(){
+
+    }
+    /**
+     * the created shortened actionlistener
+     */
+    void ExitbuttonClick(){
+        /**
+         * closes program on click
+         */
         System.exit(0);
-        //closes program on click
+
     }
     /**returns the JButton
      *@return creates the exitbutton
