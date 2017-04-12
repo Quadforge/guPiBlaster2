@@ -1,3 +1,5 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -40,9 +42,7 @@ public class GUIAM {
         Font myFont = new Font("Dialog", Font.BOLD, 28);
         autobutton = new JButton("AUTO");
         autobutton.setFont(myFont);
-        autobutton.setForeground(Color.red);
-        //autobutton.setBackground(Color.black);
-        //autobutton.setBorder(BorderFactory.createLineBorder(Color.black));
+        autobutton.setForeground(Color.black);
         /**
          * input code here
          */
@@ -51,9 +51,7 @@ public class GUIAM {
         Font myFont = new Font("Dialog", Font.BOLD, 28);
         manbutton = new JButton("MANUAL");
         manbutton.setFont(myFont);
-        manbutton.setForeground(Color.red);
-        //manbutton.setBackground(Color.black);
-        //manbutton.setBorder(BorderFactory.createLineBorder(Color.black));
+        manbutton.setForeground(Color.black);
         /**
          * input code here
          */

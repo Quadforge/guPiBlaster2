@@ -1,4 +1,4 @@
-/**
+package GUI; /**
  * Created by NkemOhanenye on 3/24/17.
  */
 
@@ -11,9 +11,9 @@ public class GUIFrame {
         JFrame frame = new JFrame();
 
         /**
-         * colors the background red
+         * colors the background white
          */
-        frame.getContentPane().setBackground(Color.red.darker().darker().darker());
+        frame.getContentPane().setBackground(Color.white);
         /**
          * removes window bar
          */

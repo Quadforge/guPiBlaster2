@@ -1,5 +1,9 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by NkemOhanenye on 3/24/17.
@@ -28,29 +32,15 @@ public class GUIExit {
          * sets the layout of the panel
          */
         exitpanel.setLayout(new BorderLayout());
+	    Font myFont = new Font("Dialog", Font.BOLD, 50);
 
         /**
-         * imports picture for the exitbutton
+         * makes the exitbutton a global variable
          */
-        ImageIcon closeBt = new ImageIcon("enter closebt.png location here");
-        /**
-         * makes the exitbutton a global variable and imports image
-         */
-        exitbutton = new JButton(closeBt);
-
-        /**
-         * makes exitbutton activate a shorter version of actionlistener (lambda)
-         */
-        exitbutton.addActionListener(e -> ExitbuttonClick());
-
-        /**
-         * removes the exitbutton border
-         */
-        exitbutton.setBorder(BorderFactory.createEmptyBorder());
-        /**
-         * removes the border and area around the button
-         */
-        exitbutton.setContentAreaFilled(false);
+        exitbutton = new JButton("X");
+	    exitbutton.setFont(myFont);
+	    exitbutton.setForeground(Color.black);
+	    exitbutton.setContentAreaFilled(false);
 
         /**
          * adds button to panel and the borderlayout north
@@ -61,16 +51,6 @@ public class GUIExit {
          */
         exitpanel.setBackground(null);
 
-
-    }
-    /**
-     * the created shortened actionlistener
-     */
-    void ExitbuttonClick(){
-        /**
-         * closes program on click
-         */
-        System.exit(0);
 
     }
     /**returns the JButton

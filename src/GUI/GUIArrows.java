@@ -1,3 +1,5 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,7 +8,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by NkemOhanenye on 3/24/17.
  */
-public class GUIArrows {
+public class GUIArrows implements ActionListener{
     /**
      * makes the JPanel global variables
      */
@@ -45,7 +47,7 @@ public class GUIArrows {
         /**
          * gives the arrowpanel the specified layout
          */
-        arrowpanel.setLayout(new FlowLayout(FlowLayout.RIGHT,10,550));
+        arrowpanel.setLayout(new FlowLayout(FlowLayout.RIGHT,10,300));
 
         arrowpanel.add(upButton);
         arrowpanel.add(downButton);
@@ -59,102 +61,68 @@ public class GUIArrows {
     }
 
     public void UpArrow(){
-        /**
-         * makes the inner class ServoIncrt a variable
-         */
-        ServoIncrt listener = new ServoIncrt();
-        /**
-         * adds an image to the upbutton
-         */
-        ImageIcon upArrow = new ImageIcon("enter upArrow.png location here");
+        Font myFont = new Font("Dialog", Font.BOLD, 50);
         /**
          * makes upbutton a global variable
          */
-        upButton = new JButton(upArrow);
+        upButton = new JButton("Λ");
+	    upButton.setFont(myFont);
+	    upButton.setForeground(Color.black);
+	    upButton.setContentAreaFilled(false);
 
         /**
          * makes upButton be added to the listener
          */
-        upButton.addActionListener(listener);
-
-        /**
-         * removes the border of upbutton
-         */
-        upButton.setBorder(BorderFactory.createEmptyBorder());
-        /**
-         * removes the area around the button
-         */
-        upButton.setContentAreaFilled(false);
-
+        upButton.addActionListener(this);
     }
 
     public void DownArrow(){
-        /**
-         * makes the inner class ServoIncrt a variable
-         */
-        ServoIncrt listener = new ServoIncrt();
-        /**
-         * adds an image to the downbutton
-         */
-        ImageIcon downArrow = new ImageIcon("enter downArrow.png location here");
+        Font myFont = new Font("Dialog", Font.BOLD, 50);
         /**
          * makes downbutton a global variable
          */
-        downButton = new JButton(downArrow);
+        downButton = new JButton("V");
+	    downButton.setFont(myFont);
+	    downButton.setForeground(Color.black);
+	    downButton.setContentAreaFilled(false);
         /**
          * lets the downButton communicate with the listener
          */
-        downButton.addActionListener(listener);
-        /**
-         * removes the border of downbutton
-         */
-        downButton.setBorder(BorderFactory.createEmptyBorder());
-        /**
-         * removes the area around the button
-         */
-        downButton.setContentAreaFilled(false);
-
+        downButton.addActionListener(this);
     }
-
     /**
-     * the inner class ServoIncrt
-     * increments ActionListener
+     * creates the actionPerformed method
      */
-    public class ServoIncrt implements ActionListener {
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(incrementer);
         /**
-         * creates the actionPerformed method
+         * conditional if upbutton is clicked and limit is less or equal to 2
          */
-        public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == upButton && incrementer <= 2.0) {
             /**
-             * conditional if upbutton is clicked and limit is less or equal to 2
+             * increments + .1
              */
-            if (e.getSource() == upButton && incrementer <= 2.0) {
-                /**
-                 * increments + .1
-                 */
-                incrementer += 0.1;
-                /**
-                 * @param Math.floor rounds the output of adding .1 down
-                 */
-                if (Math.floor(incrementer) == 2.0) {
-
-                    upButton.setText("MAX");
-                }
+            incrementer += 0.1;
+            /**
+             * @param Math.floor rounds the output of adding .1 down
+             */
+            if (Math.floor(incrementer) == 2.0) {
+                upButton.setText("MAX");
             }
+        }
+        /**
+         * conditional if downButton is clicked and limit is greater or equal to 1
+         */
+        if (e.getSource() == downButton && incrementer >= 1.0) {
             /**
-             * conditional if downButton is clicked and limit is greater or equal to 1
+             * increments - .1
              */
-            if (e.getSource() == downButton && incrementer >= 1.0) {
-                /**
-                 * increments - .1
-                 */
-                incrementer -= 0.1;
-                /**
-                 * @param Math.ceil rounds number up with .1
-                 */
-                if (Math.ceil(incrementer) == 1.0) {
-                    downButton.setText("MAX");
-                }
+            incrementer -= 0.1;
+            /**
+             * @param Math.ceil rounds number up with .1
+             */
+            if (Math.ceil(incrementer) == 1.0) {
+                downButton.setText("MAX");
             }
         }
     }

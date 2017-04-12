@@ -1,3 +1,5 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -55,6 +57,11 @@ public class GUIMenu extends JPanel{
 
             public void actionPerformed(ActionEvent e) {
                 ampanel.AutoButton();
+                if(e.getSource() == ampanel.getAutobutton()){
+                    System.out.println("Auto");
+                }
+                System.out.println(e.getSource());
+                System.out.println(ampanel.getAutobutton());
             }
         }
 
@@ -62,6 +69,9 @@ public class GUIMenu extends JPanel{
 
             public void actionPerformed(ActionEvent e) {
                 ampanel.ManButton();
+                if(e.getSource() == ampanel.getManbutton()){
+                    System.out.println("Manual");
+                }
             }
         }
 
@@ -69,6 +79,7 @@ public class GUIMenu extends JPanel{
 
             public void actionPerformed(ActionEvent e) {
                 exitpanel.ExitButton();
+                System.exit(0);
             }
         }
 
@@ -105,6 +116,5 @@ public class GUIMenu extends JPanel{
         add(ampanel.getAmpanel(), BorderLayout.NORTH);
         add(exitpanel.getExitpanel(), BorderLayout.EAST);
         add(datapanel.getDatapanel(), BorderLayout.WEST);
-
     }
 }
