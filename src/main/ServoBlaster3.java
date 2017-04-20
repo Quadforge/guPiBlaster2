@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by robert on 3/31/17.
@@ -20,6 +24,8 @@ public class ServoBlaster3 {
 
     File devServoblaster = new File(DEV_SERVO_DIRECTORY);
     PrintWriter command;
+
+    Timer timer;
 
     public void initialPulse()throws IOException{
         try{
@@ -40,7 +46,7 @@ public class ServoBlaster3 {
             System.out.println("Connot find /dev/servoblaster");
         }
     }
-    public void automatic() throws IOException, InterruptedException {                               //index ( 0    1    2    3    4    5    6    7    8   9    10
+    /*public void automatic() throws IOException, InterruptedException {                               //index ( 0    1    2    3    4    5    6    7    8   9    10
         for (int i =1; i <=11; i++) {                                                                //pulses(900,1000,1200,1300,1400,1500,1600,1700,1800,1900,2000
             try {                                                                              //servoblaster( 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250
                 command = new PrintWriter(devServoblaster);                        //ReadingsFromOscilloscope(0900,1000,1100,1200,1300,1400,1600,1700,1800,1900,2000,2100,2200,2400,2500,2600,2700,2800
@@ -54,5 +60,28 @@ public class ServoBlaster3 {
         command = new PrintWriter(devServoblaster);
         command.println("2=" + STARTING_PULSE + "us");
         command.close();
+    }*/
+    public void auto() {
+        long mylong = 1234;
+        timer = new Timer();
+        timer.schedule(new TimerCount(), 0, 1000);
+    }
+    class TimerCount extends TimerTask{
+        int pulseIndex = PULSES[1];
+        @Override
+        public void run() {
+
+            for (pulseIndex = 1; pulseIndex <= 11; pulseIndex++){
+                    try {
+                        command = new PrintWriter(devServoblaster);
+                        command.println("2=" + PULSES[pulseIndex] + "us");
+                        command.close();
+                    }catch (IOException e){
+                        System.out.println("CONNOT FIND");
+                    }
+                    //timer.cancel();
+            }
+            timer.cancel();
+        }
     }
 }

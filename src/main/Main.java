@@ -12,7 +12,7 @@ public class Main {
          //blaster.userRun(1200);
          //blaster.userRun(900);
         ServoBlaster3 blaster = new ServoBlaster3();
-        blaster.automatic();
+        blaster.auto();
        /* boolean isRunning = false;
 
         while (isRunning = true){
