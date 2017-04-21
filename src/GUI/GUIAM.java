@@ -1,7 +1,12 @@
 package GUI;
 
+import main.ServoBlaster3;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * Created by NkemOhanenye on 3/24/17.
@@ -43,6 +48,8 @@ public class GUIAM {
         autobutton = new JButton("AUTO");
         autobutton.setFont(myFont);
         autobutton.setForeground(Color.black);
+
+        autobutton.addActionListener(new AutoButtonListener());
         /**
          * input code here
          */
@@ -68,4 +75,18 @@ public class GUIAM {
      * @return Ampanel the ampanel. It contains these JButtons
      */
     public JPanel getAmpanel(){return ampanel;}
+
+    private class AutoButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            ServoBlaster3 auto = new ServoBlaster3();
+            try {
+                auto.automatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

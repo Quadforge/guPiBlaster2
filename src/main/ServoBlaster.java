@@ -33,9 +33,7 @@ public class ServoBlaster {
     //Manuallly sets servoblaster to run through pulse width 1 to 2 ms
     public void autoRun() {
         timer = new Timer();
-        timer.schedule(new Task1(),
-                0,        //initial delay
-                1*1000);  //subsequent rate
+        timer.schedule(new Task1(), 0,  1*1000);  //subsequent rate
     }
 
     class Task1 extends TimerTask {
