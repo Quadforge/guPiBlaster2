@@ -28,7 +28,7 @@ public class GUIAM {
          * creates a panel for the auto and manual and creates the layout
          */
         ampanel = new JPanel();
-        ampanel.setLayout(new GridLayout(1, 2,10,0));
+        ampanel.setLayout(new GridLayout(1, 2,10,10));
         /**
          * adds the buttons to the panel
          */

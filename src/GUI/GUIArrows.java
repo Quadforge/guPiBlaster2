@@ -4,11 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 /**
  * Created by NkemOhanenye on 3/24/17.
  */
-public class GUIArrows implements ActionListener{
+public class GUIArrows {
     /**
      * makes the JPanel global variables
      */
@@ -47,7 +48,7 @@ public class GUIArrows implements ActionListener{
         /**
          * gives the arrowpanel the specified layout
          */
-        arrowpanel.setLayout(new FlowLayout(FlowLayout.RIGHT,10,300));
+        arrowpanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 300));
 
         arrowpanel.add(upButton);
         arrowpanel.add(downButton);
@@ -60,69 +61,92 @@ public class GUIArrows implements ActionListener{
 
     }
 
-    public void UpArrow(){
+    public void UpArrow() {
         Font myFont = new Font("Dialog", Font.BOLD, 50);
         /**
          * makes upbutton a global variable
          */
-        upButton = new JButton("Λ");
-	    upButton.setFont(myFont);
-	    upButton.setForeground(Color.black);
-	    upButton.setContentAreaFilled(false);
+        upButton = new JButton("A");
+        upButton.setFont(myFont);
+        upButton.setForeground(Color.black);
+        upButton.setContentAreaFilled(false);
 
         /**
          * makes upButton be added to the listener
          */
-        upButton.addActionListener(this);
+        upButton.addActionListener(new UpAction());
     }
 
-    public void DownArrow(){
+    public void DownArrow() {
         Font myFont = new Font("Dialog", Font.BOLD, 50);
         /**
          * makes downbutton a global variable
          */
-        downButton = new JButton("V");
-	    downButton.setFont(myFont);
-	    downButton.setForeground(Color.black);
-	    downButton.setContentAreaFilled(false);
+        downButton = new JButton("∀");
+        downButton.setFont(myFont);
+        downButton.setForeground(Color.black);
+        downButton.setContentAreaFilled(false);
         /**
          * lets the downButton communicate with the listener
          */
-        downButton.addActionListener(this);
+        downButton.addActionListener(new DownAction());
     }
-    /**
-     * creates the actionPerformed method
-     */
-    public void actionPerformed(ActionEvent e) {
-        System.out.println(incrementer);
+
+    public class UpAction implements ActionListener {
         /**
-         * conditional if upbutton is clicked and limit is less or equal to 2
+         * creates the actionPerformed method
          */
-        if (e.getSource() == upButton && incrementer <= 2.0) {
+        public void actionPerformed(ActionEvent e) {
             /**
-             * increments + .1
+             * creates the DecimalFormat variable
+             * @variable dec, makes there be only one decimal
              */
-            incrementer += 0.1;
+            DecimalFormat dec = new DecimalFormat("#.0");
             /**
-             * @param Math.floor rounds the output of adding .1 down
+             * conditional if upbutton is clicked and limit is less or equal to 2
              */
-            if (Math.floor(incrementer) == 2.0) {
-                upButton.setText("MAX");
+            if (incrementer <= 2.1) {
+                /**
+                 * overwrites the increment and rounds it
+                 * @param dec.format round the number according to the DecimalFormat variable
+                 */
+                incrtbox.setText(dec.format(incrementer + 0.1) + " ms");
+                /**
+                 * increments + .1
+                 * @param Math.floor rounds the output of adding .1 down
+                 */
+                Math.floor(incrementer += 0.1);
             }
         }
+    }
+
+    /**
+     * conditional if downButton is clicked and limit is greater or equal to 1
+     */
+    public class DownAction implements ActionListener {
         /**
-         * conditional if downButton is clicked and limit is greater or equal to 1
+         * creates the actionPerformed method
          */
-        if (e.getSource() == downButton && incrementer >= 1.0) {
+        public void actionPerformed(ActionEvent e) {
             /**
-             * increments - .1
+             * creates the DecimalFormat variable
+             * @variable dec, makes there be only one decimal
              */
-            incrementer -= 0.1;
+            DecimalFormat dec = new DecimalFormat("#.0");
             /**
-             * @param Math.ceil rounds number up with .1
+             * conditional if downbutton is clicked and limit is greater or equal to 1
              */
-            if (Math.ceil(incrementer) == 1.0) {
-                downButton.setText("MAX");
+            if (incrementer >= 1.0) {
+                /**
+                 * overwrites the increment and rounds it
+                 * @param dec.format round the number according to the DecimalFormat variable
+                 */
+                incrtbox.setText(dec.format(incrementer) + " ms");
+                /**
+                 * increments - .1
+                 * @param Math.floor rounds the output of adding .1 down
+                 */
+                Math.floor(incrementer -= 0.1);
             }
         }
     }
@@ -146,4 +170,5 @@ public class GUIArrows implements ActionListener{
      * @return Incrementer the incrementer.
      */
     public double getIncrementer() {return incrementer;}
+    public JLabel getIncrtbox(){return incrtbox;}
 }

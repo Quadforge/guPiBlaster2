@@ -57,11 +57,7 @@ public class GUIMenu extends JPanel{
 
             public void actionPerformed(ActionEvent e) {
                 ampanel.AutoButton();
-                if(e.getSource() == ampanel.getAutobutton()){
-                    System.out.println("Auto");
-                }
-                System.out.println(e.getSource());
-                System.out.println(ampanel.getAutobutton());
+                System.out.println("Auto");
             }
         }
 
@@ -69,9 +65,7 @@ public class GUIMenu extends JPanel{
 
             public void actionPerformed(ActionEvent e) {
                 ampanel.ManButton();
-                if(e.getSource() == ampanel.getManbutton()){
-                    System.out.println("Manual");
-                }
+                System.out.println("Manual");
             }
         }
 
