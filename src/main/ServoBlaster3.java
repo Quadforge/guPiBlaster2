@@ -38,15 +38,17 @@ public class ServoBlaster3 {
             System.out.println("Cannot find /dev/servoblaster");
         }
     }
-    public void increasePulse()throws IOException{
+    /*public void increasePulse(int pulseIndex)throws IOException{
+        pulseIndex = PULSES[1];
+
         try {
             command = new PrintWriter(devServoblaster);
-            command.println("2=" + MID_PULSE + "us");
+            command.println("2=" + pulse + "us");
             command.close();
         }catch (IOException e){
             System.out.println("Connot find /dev/servoblaster");
         }
-    }
+    }*/
     public void automatic() throws IOException, InterruptedException {                               //index ( 0    1    2    3    4    5    6    7    8   9    10
         for (int i =1; i <=11; i++) {                                                                //pulses(900,1000,1200,1300,1400,1500,1600,1700,1800,1900,2000
             try {                                                                              //servoblaster( 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250
