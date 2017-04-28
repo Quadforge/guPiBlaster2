@@ -1,5 +1,7 @@
 package GUI;
 
+import main.ServoBlaster3;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -105,6 +107,8 @@ public class GUIArrows {
             /**
              * conditional if upbutton is clicked and limit is less or equal to 2
              */
+            ServoBlaster3 up = new ServoBlaster3();
+            up.increasePulse();
             if (incrementer <= 2.1) {
                 /**
                  * overwrites the increment and rounds it
@@ -117,6 +121,7 @@ public class GUIArrows {
                  */
                 Math.floor(incrementer += 0.1);
             }
+
         }
     }
 
@@ -133,6 +138,8 @@ public class GUIArrows {
              * @variable dec, makes there be only one decimal
              */
             DecimalFormat dec = new DecimalFormat("#.0");
+            ServoBlaster3 down = new ServoBlaster3();
+            down.initialPulse();
             /**
              * conditional if downbutton is clicked and limit is greater or equal to 1
              */
@@ -148,6 +155,7 @@ public class GUIArrows {
                  */
                 Math.floor(incrementer -= 0.1);
             }
+
         }
     }
     /**
@@ -171,4 +179,5 @@ public class GUIArrows {
      */
     public double getIncrementer() {return incrementer;}
     public JLabel getIncrtbox(){return incrtbox;}
+
 }

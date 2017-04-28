@@ -18,7 +18,7 @@ public class ServoBlaster3 {
     final private int STARTING_PULSE = 800;
     final private int MID_PULSE = 1600;
     final private String DEV_SERVO_DIRECTORY = "/dev/servoblaster";
-
+                           //index# 0,  1,    2,    3,    4,    5,    6,    7,    8,    9,   10,   11
     final private int[] PULSES = {800, 900, 1000, 1100, 1170, 1270, 1350, 1450, 1520, 1600, 1700, 1800};
 
     int countdownStart = 5;
@@ -28,7 +28,7 @@ public class ServoBlaster3 {
 
     Timer timer;
 
-    public void initialPulse()throws IOException{
+    public void initialPulse(){
         try{
             command = new PrintWriter(devServoblaster);
             command.println("2=" + STARTING_PULSE + "us");
@@ -38,17 +38,17 @@ public class ServoBlaster3 {
             System.out.println("Cannot find /dev/servoblaster");
         }
     }
-    /*public void increasePulse(int pulseIndex)throws IOException{
-        pulseIndex = PULSES[1];
+    public void increasePulse(){
+        //pulseIndex = PULSES[1];
 
         try {
             command = new PrintWriter(devServoblaster);
-            command.println("2=" + pulse + "us");
+            command.println("2=" + PULSES[11] + "us");
             command.close();
         }catch (IOException e){
             System.out.println("Connot find /dev/servoblaster");
         }
-    }*/
+    }
     public void automatic() throws IOException, InterruptedException {                               //index ( 0    1    2    3    4    5    6    7    8   9    10
         for (int i =1; i <=11; i++) {                                                                //pulses(900,1000,1200,1300,1400,1500,1600,1700,1800,1900,2000
             try {                                                                              //servoblaster( 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250

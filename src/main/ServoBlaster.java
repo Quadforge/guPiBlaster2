@@ -41,7 +41,7 @@ public class ServoBlaster {
 
         //uses timertask to write new increment of pulsewidth every 5 seconds
         public void run() {
-            servoPulse++;
+            /*servoPulse++;
             if (servoPulse < 10) {
                 double pulse = (0+servoPulse/10)*1000;
                 int pulse1 = (int)pulse;
@@ -56,7 +56,7 @@ public class ServoBlaster {
 
             } else {
                 timer.cancel();
-            }
+            }*/
         }
     }
 }
