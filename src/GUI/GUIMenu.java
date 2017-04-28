@@ -60,10 +60,10 @@ public class GUIMenu extends JPanel{
             }
         }
 
-        class AddManButtonListener implements ActionListener{
+        class AddStopButtonListener implements ActionListener{
 
             public void actionPerformed(ActionEvent e) {
-                aspanel.ManButton();
+                aspanel.StopButton();
             }
         }
 
@@ -81,7 +81,7 @@ public class GUIMenu extends JPanel{
         ActionListener upButtonListener = new AddUpButtonListener();
         ActionListener downButtonListener = new AddDownButtonListener();
         ActionListener autoButtonListener = new AddAutoButtonListener();
-        ActionListener manButtonListener = new AddManButtonListener();
+        ActionListener stopButtonListener = new AddStopButtonListener();
         ActionListener exitButtonListener = new AddExitButtonListener();
 
         /**
@@ -90,7 +90,7 @@ public class GUIMenu extends JPanel{
         arrowpanel.getUpbutton().addActionListener(upButtonListener);
         arrowpanel.getDownbutton().addActionListener(downButtonListener);
         aspanel.getAutobutton().addActionListener(autoButtonListener);
-        aspanel.getManbutton().addActionListener(manButtonListener);
+        aspanel.getStopbutton().addActionListener(stopButtonListener);
         exitpanel.getExitbutton().addActionListener(exitButtonListener);
 
     }

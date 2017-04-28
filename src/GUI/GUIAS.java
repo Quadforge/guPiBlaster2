@@ -27,7 +27,7 @@ public class GUIAS {
          * the methods created for the file
          */
         AutoButton();
-        ManButton();
+        StopButton();
 
         /**
          * creates a panel for the auto and manual and creates the layout
@@ -54,7 +54,7 @@ public class GUIAS {
          * input code here
          */
     }
-    public void ManButton(){
+    public void StopButton(){
         Font myFont = new Font("Dialog", Font.BOLD, 28);
         stopbutton = new JButton("STOP");
         stopbutton.setFont(myFont);
@@ -83,7 +83,7 @@ public class GUIAS {
     /**returns the JButton
      *@return creates the downbutton
      */
-    public JButton getManbutton(){return stopbutton;}
+    public JButton getStopbutton(){return stopbutton;}
     /**returns the ampanel
      * @return Ampanel the ampanel. It contains these JButtons
      */
