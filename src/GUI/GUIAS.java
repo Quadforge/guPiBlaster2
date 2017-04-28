@@ -66,6 +66,9 @@ public class GUIAS {
     private class AutoButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
+            /**
+             * Try and Catch setup for the autobutton's IOExceptions
+             */
             ServoBlaster3 auto = new ServoBlaster3();
             try {
                 auto.automatic();
