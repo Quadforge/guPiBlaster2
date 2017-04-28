@@ -63,19 +63,6 @@ public class GUIAM {
          * input code here
          */
     }
-    /**returns the JButton
-     *@return creates the autobutton
-     */
-    public JButton getAutobutton(){return autobutton;}
-    /**returns the JButton
-     *@return creates the downbutton
-     */
-    public JButton getManbutton(){return manbutton;}
-    /**returns the ampanel
-     * @return Ampanel the ampanel. It contains these JButtons
-     */
-    public JPanel getAmpanel(){return ampanel;}
-
     private class AutoButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
@@ -89,4 +76,16 @@ public class GUIAM {
             }
         }
     }
+    /**returns the JButton
+     *@return creates the autobutton
+     */
+    public JButton getAutobutton(){return autobutton;}
+    /**returns the JButton
+     *@return creates the downbutton
+     */
+    public JButton getManbutton(){return manbutton;}
+    /**returns the ampanel
+     * @return Ampanel the ampanel. It contains these JButtons
+     */
+    public JPanel getAmpanel(){return ampanel;}
 }
