@@ -11,18 +11,18 @@ import java.io.IOException;
 /**
  * Created by NkemOhanenye on 3/24/17.
  */
-public class GUIAM {
+public class GUIAS {
     /**
      * creates the auto and the manual buttons
      */
     private JButton autobutton;
-    private JButton manbutton;
+    private JButton stopbutton;
     /**
      * creates the ampanel
      */
-    private JPanel ampanel;
+    private JPanel aspanel;
 
-    public GUIAM(){
+    public GUIAS(){
         /**
          * the methods created for the file
          */
@@ -32,15 +32,15 @@ public class GUIAM {
         /**
          * creates a panel for the auto and manual and creates the layout
          */
-        ampanel = new JPanel();
-        ampanel.setLayout(new GridLayout(1, 2,10,10));
+        aspanel = new JPanel();
+        aspanel.setLayout(new GridLayout(1, 2,10,10));
         /**
          * adds the buttons to the panel
          */
-        ampanel.add(autobutton);
-        ampanel.add(manbutton);
+        aspanel.add(autobutton);
+        aspanel.add(stopbutton);
 
-        ampanel.setBackground(null);
+        aspanel.setBackground(null);
 
     }
     public void AutoButton(){
@@ -56,9 +56,9 @@ public class GUIAM {
     }
     public void ManButton(){
         Font myFont = new Font("Dialog", Font.BOLD, 28);
-        manbutton = new JButton("MANUAL");
-        manbutton.setFont(myFont);
-        manbutton.setForeground(Color.black);
+        stopbutton = new JButton("STOP");
+        stopbutton.setFont(myFont);
+        stopbutton.setForeground(Color.black);
         /**
          * input code here
          */
@@ -83,9 +83,9 @@ public class GUIAM {
     /**returns the JButton
      *@return creates the downbutton
      */
-    public JButton getManbutton(){return manbutton;}
+    public JButton getManbutton(){return stopbutton;}
     /**returns the ampanel
      * @return Ampanel the ampanel. It contains these JButtons
      */
-    public JPanel getAmpanel(){return ampanel;}
+    public JPanel getAspanel(){return aspanel;}
 }

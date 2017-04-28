@@ -14,7 +14,7 @@ public class GUIMenu extends JPanel{
      */
     private GUIArrows arrowpanel;
     private GUIExit exitpanel;
-    private GUIAM ampanel;
+    private GUIAS aspanel;
     private GUIPanels datapanel;
 
     public GUIMenu(){
@@ -23,7 +23,7 @@ public class GUIMenu extends JPanel{
          */
         arrowpanel = new GUIArrows();
         exitpanel = new GUIExit();
-        ampanel = new GUIAM();
+        aspanel = new GUIAS();
         datapanel = new GUIPanels();
 
         /**
@@ -56,16 +56,14 @@ public class GUIMenu extends JPanel{
         class AddAutoButtonListener implements ActionListener{
 
             public void actionPerformed(ActionEvent e) {
-                ampanel.AutoButton();
-                System.out.println("Auto");
+                aspanel.AutoButton();
             }
         }
 
         class AddManButtonListener implements ActionListener{
 
             public void actionPerformed(ActionEvent e) {
-                ampanel.ManButton();
-                System.out.println("Manual");
+                aspanel.ManButton();
             }
         }
 
@@ -91,8 +89,8 @@ public class GUIMenu extends JPanel{
          */
         arrowpanel.getUpbutton().addActionListener(upButtonListener);
         arrowpanel.getDownbutton().addActionListener(downButtonListener);
-        ampanel.getAutobutton().addActionListener(autoButtonListener);
-        ampanel.getManbutton().addActionListener(manButtonListener);
+        aspanel.getAutobutton().addActionListener(autoButtonListener);
+        aspanel.getManbutton().addActionListener(manButtonListener);
         exitpanel.getExitbutton().addActionListener(exitButtonListener);
 
     }
@@ -107,7 +105,7 @@ public class GUIMenu extends JPanel{
          * calls all the panels to a single panel
          */
         add(arrowpanel.getArrowpanel());
-        add(ampanel.getAmpanel(), BorderLayout.NORTH);
+        add(aspanel.getAspanel(), BorderLayout.NORTH);
         add(exitpanel.getExitpanel(), BorderLayout.EAST);
         add(datapanel.getDatapanel(), BorderLayout.WEST);
     }
