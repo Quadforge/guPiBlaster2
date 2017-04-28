@@ -170,5 +170,9 @@ public class GUIArrows {
      * @return Incrementer the incrementer.
      */
     public double getIncrementer() {return incrementer;}
+    /**
+     * returns the incrtbox
+     * @return Incrtbox the incrtbox.
+     */
     public JLabel getIncrtbox(){return incrtbox;}
 }
