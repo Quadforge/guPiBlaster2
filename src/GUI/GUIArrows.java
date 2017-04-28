@@ -109,7 +109,7 @@ public class GUIArrows {
              */
             ServoBlaster3 up = new ServoBlaster3();
             up.increasePulse();
-            if (incrementer <= 2.1) {
+            if (incrementer < 2.1) {
                 /**
                  * overwrites the increment and rounds it
                  * @param dec.format round the number according to the DecimalFormat variable
@@ -141,14 +141,14 @@ public class GUIArrows {
             ServoBlaster3 down = new ServoBlaster3();
             down.initialPulse();
             /**
-             * conditional if downbutton is clicked and limit is greater or equal to 1
+             * conditional if downbutton is clicked and limit is greater or equal to 1.1
              */
-            if (incrementer >= 1.0) {
+            if (incrementer >= 1.1) {
                 /**
                  * overwrites the increment and rounds it
                  * @param dec.format round the number according to the DecimalFormat variable
                  */
-                incrtbox.setText(dec.format(incrementer) + " ms");
+                incrtbox.setText(dec.format(incrementer - 0.1) + " ms");
                 /**
                  * increments - .1
                  * @param Math.floor rounds the output of adding .1 down
