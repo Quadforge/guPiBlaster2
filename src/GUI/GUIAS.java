@@ -13,12 +13,12 @@ import java.io.IOException;
  */
 public class GUIAS {
     /**
-     * creates the auto and the manual buttons
+     * creates the auto and the stop buttons
      */
     private JButton autobutton;
     private JButton stopbutton;
     /**
-     * creates the ampanel
+     * creates the aspanel
      */
     private JPanel aspanel;
 
@@ -30,7 +30,7 @@ public class GUIAS {
         StopButton();
 
         /**
-         * creates a panel for the auto and manual and creates the layout
+         * creates a panel for the auto and stop and creates the layout
          */
         aspanel = new JPanel();
         aspanel.setLayout(new GridLayout(1, 2,10,10));
@@ -81,11 +81,11 @@ public class GUIAS {
      */
     public JButton getAutobutton(){return autobutton;}
     /**returns the JButton
-     *@return creates the downbutton
+     *@return creates the stopbutton
      */
     public JButton getStopbutton(){return stopbutton;}
-    /**returns the ampanel
-     * @return Ampanel the ampanel. It contains these JButtons
+    /**returns the aspanel
+     * @return Aspanel the aspanel. It contains these JButtons
      */
     public JPanel getAspanel(){return aspanel;}
 }
