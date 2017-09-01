@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 /**
@@ -67,7 +68,7 @@ public class GUIArrows {
         /**
          * adds an image to the upbutton
          */
-        ImageIcon upArrow = new ImageIcon("/home/otakusenseihig/IdeaProjects/guPiBlaster2/src/upArrow.png");
+        ImageIcon upArrow = new ImageIcon("/home/otakusenseihig/IdeaProjects/RaspberryGUI/upArrow.png");
 
         /**
          * makes upbutton a global variable
@@ -86,7 +87,7 @@ public class GUIArrows {
         /**
          * adds an image to the downbutton
          */
-        ImageIcon downArrow = new ImageIcon("/home/otakusenseihig/IdeaProjects/guPiBlaster2/src/downArrow.png");
+        ImageIcon downArrow = new ImageIcon("/home/otakusenseihig/IdeaProjects/RaspberryGUI/downArrow.png");
 
         /**
          * makes downbutton a global variable
@@ -190,4 +191,141 @@ public class GUIArrows {
      */
     public JLabel getIncrtbox(){return incrtbox;}
 
+}
+
+class GUIAS {
+    /**
+     * creates the auto and the stop buttons
+     */
+    private JButton autobutton;
+    private JButton stopbutton;
+    /**
+     * creates the aspanel
+     */
+    private JPanel aspanel;
+
+    public GUIAS(){
+        /**
+         * the methods created for the file
+         */
+        AutoButton();
+        StopButton();
+
+        /**
+         * creates a panel for the auto and stop and creates the layout
+         */
+        aspanel = new JPanel();
+        aspanel.setLayout(new GridLayout(1, 2,10,10));
+        /**
+         * adds the buttons to the panel
+         */
+        aspanel.add(autobutton);
+        aspanel.add(stopbutton);
+
+        aspanel.setBackground(null);
+
+    }
+    public void AutoButton(){
+        Font myFont = new Font("Dialog", Font.BOLD, 28);
+        autobutton = new JButton("AUTO");
+        autobutton.setFont(myFont);
+        autobutton.setForeground(Color.black);
+
+        autobutton.addActionListener(new AutoButtonListener());
+        /**
+         * input code here
+         */
+    }
+    public void StopButton(){
+        Font myFont = new Font("Dialog", Font.BOLD, 28);
+        stopbutton = new JButton("STOP");
+        stopbutton.setFont(myFont);
+        stopbutton.setForeground(Color.black);
+        /**
+         * input code here
+         */
+    }
+    private class AutoButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            /**
+             * Try and Catch setup for the autobutton's IOExceptions
+             */
+            ServoBlaster3 auto = new ServoBlaster3();
+            try {
+                auto.automatic();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    /**returns the JButton
+     *@return creates the autobutton
+     */
+    public JButton getAutobutton(){return autobutton;}
+    /**returns the JButton
+     *@return creates the stopbutton
+     */
+    public JButton getStopbutton(){return stopbutton;}
+    /**returns the aspanel
+     * @return Aspanel the aspanel. It contains these JButtons
+     */
+    public JPanel getAspanel(){return aspanel;}
+}
+
+class GUIExit {
+
+    /**
+     * creates the exitpanel
+     */
+    private JPanel exitpanel;
+    /**
+     * creates the exitbutton
+     */
+    private JButton exitbutton;
+
+    public GUIExit(){
+        ExitButton();
+    }
+
+    public void ExitButton(){
+        /**
+         * makes the panel a global variable
+         */
+        exitpanel = new JPanel();
+        /**
+         * sets the layout of the panel
+         */
+        exitpanel.setLayout(new BorderLayout());
+        Font myFont = new Font("Dialog", Font.BOLD, 50);
+
+        /**
+         * makes the exitbutton a global variable
+         */
+        exitbutton = new JButton("X");
+        exitbutton.setFont(myFont);
+        exitbutton.setForeground(Color.black);
+        exitbutton.setContentAreaFilled(false);
+
+        /**
+         * adds button to panel and the borderlayout north
+         */
+        exitpanel.add(exitbutton, BorderLayout.NORTH);
+        /**
+         * removes the default panel button
+         */
+        exitpanel.setBackground(null);
+
+
+    }
+    /**returns the JButton
+     *@return creates the exitbutton
+     */
+    public JButton getExitbutton(){return exitbutton;}
+    /**returns the exitpanel
+     * @return Exitpanel the exitpanel. It contains these JButtons
+     */
+    public JPanel getExitpanel(){return exitpanel;}
 }
