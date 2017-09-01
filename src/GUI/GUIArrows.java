@@ -64,13 +64,16 @@ public class GUIArrows {
     }
 
     public void UpArrow() {
-        Font myFont = new Font("Dialog", Font.BOLD, 50);
+        /**
+         * adds an image to the upbutton
+         */
+        ImageIcon upArrow = new ImageIcon("/home/otakusenseihig/IdeaProjects/guPiBlaster2/src/upArrow.png");
+
         /**
          * makes upbutton a global variable
          */
-        upButton = new JButton("A");
-        upButton.setFont(myFont);
-        upButton.setForeground(Color.black);
+        upButton = new JButton(upArrow);
+        upButton.setBorder(BorderFactory.createEmptyBorder());
         upButton.setContentAreaFilled(false);
 
         /**
@@ -80,13 +83,16 @@ public class GUIArrows {
     }
 
     public void DownArrow() {
-        Font myFont = new Font("Dialog", Font.BOLD, 50);
+        /**
+         * adds an image to the downbutton
+         */
+        ImageIcon downArrow = new ImageIcon("/home/otakusenseihig/IdeaProjects/guPiBlaster2/src/downArrow.png");
+
         /**
          * makes downbutton a global variable
          */
-        downButton = new JButton("∀");
-        downButton.setFont(myFont);
-        downButton.setForeground(Color.black);
+        downButton = new JButton(downArrow);
+        downButton.setBorder(BorderFactory.createEmptyBorder());
         downButton.setContentAreaFilled(false);
         /**
          * lets the downButton communicate with the listener
