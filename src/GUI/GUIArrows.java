@@ -193,18 +193,18 @@ public class GUIArrows {
 
 }
 
-class GUIAS {
+class GUIAM {
     /**
-     * creates the auto and the stop buttons
+     * creates the auto and the man buttons
      */
-    private JButton autobutton;
-    private JButton stopbutton;
+    private JButton autoButton;
+    private JButton manButton;
     /**
-     * creates the aspanel
+     * creates the amPanel
      */
-    private JPanel aspanel;
+    private JPanel amPanel;
 
-    public GUIAS(){
+    public GUIAM(){
         /**
          * the methods created for the file
          */
@@ -212,35 +212,35 @@ class GUIAS {
         StopButton();
 
         /**
-         * creates a panel for the auto and stop and creates the layout
+         * creates a panel for the auto and man and creates the layout
          */
-        aspanel = new JPanel();
-        aspanel.setLayout(new GridLayout(1, 2,10,10));
+        amPanel = new JPanel();
+        amPanel.setLayout(new GridLayout(1, 2,10,10));
         /**
          * adds the buttons to the panel
          */
-        aspanel.add(autobutton);
-        aspanel.add(stopbutton);
+        amPanel.add(autoButton);
+        amPanel.add(manButton);
 
-        aspanel.setBackground(null);
+        amPanel.setBackground(null);
 
     }
     public void AutoButton(){
         Font myFont = new Font("Dialog", Font.BOLD, 28);
-        autobutton = new JButton("AUTO");
-        autobutton.setFont(myFont);
-        autobutton.setForeground(Color.black);
+        autoButton = new JButton("AUTO");
+        autoButton.setFont(myFont);
+        autoButton.setForeground(Color.black);
 
-        autobutton.addActionListener(new AutoButtonListener());
+        autoButton.addActionListener(new AutoButtonListener());
         /**
          * input code here
          */
     }
     public void StopButton(){
         Font myFont = new Font("Dialog", Font.BOLD, 28);
-        stopbutton = new JButton("STOP");
-        stopbutton.setFont(myFont);
-        stopbutton.setForeground(Color.black);
+        manButton = new JButton("STOP");
+        manButton.setFont(myFont);
+        manButton.setForeground(Color.black);
         /**
          * input code here
          */
@@ -249,7 +249,7 @@ class GUIAS {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             /**
-             * Try and Catch setup for the autobutton's IOExceptions
+             * Try and Catch setup for the autoButton's IOExceptions
              */
             ServoBlaster3 auto = new ServoBlaster3();
             try {
@@ -262,17 +262,17 @@ class GUIAS {
         }
     }
     /**returns the JButton
-     *@return creates the autobutton
+     *@return creates the autoButton
      */
-    public JButton getAutobutton(){return autobutton;}
+    public JButton getAutoButton(){return autoButton;}
     /**returns the JButton
-     *@return creates the stopbutton
+     *@return creates the manButton
      */
-    public JButton getStopbutton(){return stopbutton;}
-    /**returns the aspanel
-     * @return Aspanel the aspanel. It contains these JButtons
+    public JButton getManButton(){return manButton;}
+    /**returns the amPanel
+     * @return Aspanel the amPanel. It contains these JButtons
      */
-    public JPanel getAspanel(){return aspanel;}
+    public JPanel getAmPanel(){return amPanel;}
 }
 
 class GUIExit {
