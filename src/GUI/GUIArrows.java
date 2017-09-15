@@ -13,6 +13,7 @@ import java.text.DecimalFormat;
  * Created by NkemOhanenye on 3/24/17.
  */
 public class GUIArrows {
+
     /**
      * makes the JPanel global variables
      */
