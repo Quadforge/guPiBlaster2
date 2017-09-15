@@ -68,7 +68,7 @@ public class GUIArrows {
         /**
          * adds an image to the upbutton
          */
-        ImageIcon upArrow = new ImageIcon("/guPiBlaster2/src/upArrow.png");
+        ImageIcon upArrow = new ImageIcon(getClass().getResource("GUI/upArrow.png"));
 
         /**
          * makes upbutton a global variable
@@ -87,7 +87,7 @@ public class GUIArrows {
         /**
          * adds an image to the downbutton
          */
-        ImageIcon downArrow = new ImageIcon("/guPiBlaster2/src/downArrow.png");
+        ImageIcon downArrow = new ImageIcon(getClass().getResource("GUI/downArrow.png"));
 
         /**
          * makes downbutton a global variable
