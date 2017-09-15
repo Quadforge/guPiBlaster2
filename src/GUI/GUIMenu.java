@@ -14,7 +14,7 @@ public class GUIMenu extends JPanel{
      */
     private GUIArrows arrowpanel;
     private GUIExit exitpanel;
-    private GUIAM aspanel;
+    private GUIAS aspanel;
     private GUIPanels datapanel;
 
     public GUIMenu(){
@@ -23,7 +23,7 @@ public class GUIMenu extends JPanel{
          */
         arrowpanel = new GUIArrows();
         exitpanel = new GUIExit();
-        aspanel = new GUIAM();
+        aspanel = new GUIAS();
         datapanel = new GUIPanels();
 
         /**
@@ -90,7 +90,7 @@ public class GUIMenu extends JPanel{
         arrowpanel.getUpbutton().addActionListener(upButtonListener);
         arrowpanel.getDownbutton().addActionListener(downButtonListener);
         aspanel.getAutoButton().addActionListener(autoButtonListener);
-        aspanel.getManButton().addActionListener(stopButtonListener);
+        aspanel.getStopButton().addActionListener(stopButtonListener);
         exitpanel.getExitbutton().addActionListener(exitButtonListener);
 
     }
@@ -105,7 +105,7 @@ public class GUIMenu extends JPanel{
          * calls all the panels to a single panel
          */
         add(arrowpanel.getArrowpanel());
-        add(aspanel.getAmPanel(), BorderLayout.NORTH);
+        add(aspanel.getAsPanel(), BorderLayout.NORTH);
         add(exitpanel.getExitpanel(), BorderLayout.EAST);
         add(datapanel.getDatapanel(), BorderLayout.WEST);
     }

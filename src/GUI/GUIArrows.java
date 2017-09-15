@@ -193,18 +193,18 @@ public class GUIArrows {
 
 }
 
-class GUIAM {
+class GUIAS {
     /**
-     * creates the auto and the man buttons
+     * creates the auto and the stop buttons
      */
     private JButton autoButton;
-    private JButton manButton;
+    private JButton stopButton;
     /**
-     * creates the amPanel
+     * creates the asPanel
      */
-    private JPanel amPanel;
+    private JPanel asPanel;
 
-    public GUIAM(){
+    public GUIAS(){
         /**
          * the methods created for the file
          */
@@ -212,17 +212,17 @@ class GUIAM {
         StopButton();
 
         /**
-         * creates a panel for the auto and man and creates the layout
+         * creates a panel for the auto and stop and creates the layout
          */
-        amPanel = new JPanel();
-        amPanel.setLayout(new GridLayout(1, 2,10,10));
+        asPanel = new JPanel();
+        asPanel.setLayout(new GridLayout(1, 2,10,10));
         /**
          * adds the buttons to the panel
          */
-        amPanel.add(autoButton);
-        amPanel.add(manButton);
+        asPanel.add(autoButton);
+        asPanel.add(stopButton);
 
-        amPanel.setBackground(null);
+        asPanel.setBackground(null);
 
     }
     public void AutoButton(){
@@ -238,9 +238,9 @@ class GUIAM {
     }
     public void StopButton(){
         Font myFont = new Font("Dialog", Font.BOLD, 28);
-        manButton = new JButton("STOP");
-        manButton.setFont(myFont);
-        manButton.setForeground(Color.black);
+        stopButton = new JButton("STOP");
+        stopButton.setFont(myFont);
+        stopButton.setForeground(Color.black);
         /**
          * input code here
          */
@@ -266,13 +266,13 @@ class GUIAM {
      */
     public JButton getAutoButton(){return autoButton;}
     /**returns the JButton
-     *@return creates the manButton
+     *@return creates the stopButton
      */
-    public JButton getManButton(){return manButton;}
-    /**returns the amPanel
-     * @return Aspanel the amPanel. It contains these JButtons
+    public JButton getStopButton(){return stopButton;}
+    /**returns the asPanel
+     * @return Aspanel the asPanel. It contains these JButtons
      */
-    public JPanel getAmPanel(){return amPanel;}
+    public JPanel getAsPanel(){return asPanel;}
 }
 
 class GUIExit {
