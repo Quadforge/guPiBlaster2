@@ -16,8 +16,8 @@ import java.io.IOException;
 
 public class ServoBlasterTest extends JFrame {
     public static void main(String[] a) throws InterruptedException, IOException {
-//      //  ServoBlaster blaster = new ServoBlaster(192, 2000, 5000);
-        // ServoBlaster blaster = new ServoBlaster(192, 2000, 400);
+//      //  ServoBlaster.ServoBlaster blaster = new ServoBlaster.ServoBlaster(192, 2000, 5000);
+        // ServoBlaster.ServoBlaster blaster = new ServoBlaster.ServoBlaster(192, 2000, 400);
 JFrame gui = new JFrame();
         gui = new JFrame();
         gui.setName("guPiBlaster");
@@ -27,7 +27,7 @@ JFrame gui = new JFrame();
         gui.setResizable(false);
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        ServoBlaster blaster = new ServoBlaster();
+        ServoBlaster.ServoBlaster blaster = new ServoBlaster.ServoBlaster();
         blaster.servoB();
 
     }

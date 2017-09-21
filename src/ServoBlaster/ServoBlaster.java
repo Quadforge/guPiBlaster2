@@ -1,3 +1,5 @@
+package ServoBlaster;
+
 import java.io.PrintWriter;
 import java.io.File;
 import java.io.IOException;
@@ -6,7 +8,7 @@ import java.io.IOException;
 public class ServoBlaster {
   
     private String servoBlasterDev = "/dev/servoblaster";
-    private String servoBlasterDir = "/home/pi/PiBits/ServoBlaster/user";
+    private String servoBlasterDir = "/home/pi/PiBits/ServoBlaster.ServoBlaster/user";
                       // 0   1    2    3    4    5    6
     int[] servoPulses = {80, 90, 100, 110, 120, 130, 140,
                       // 7    8    9   10   11    12   13   14
@@ -41,4 +43,7 @@ public class ServoBlaster {
                 }
             }
         }
+
+    public class MainServoBlaster {
     }
+}

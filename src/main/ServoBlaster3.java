@@ -51,7 +51,7 @@ public class ServoBlaster3 {
                 command = new PrintWriter(devServoblaster);                                   //Readings From Oscilloscope(0900,1000,1100,1200,1300,1400,1600,1700,1800,1900,2000,2100,2200,2400,2500,2600,2700,2800
                 command.println("2=" + PULSES[i] + "us");                           //adjustment for input to Servoblaster(  80,  90,  100, 110, 117, 127, 135, 145, 152, 160, 170, 180, 190, 200)
                 command.close();                                                                    //adjusted pulse in ms( .90, 1.0,  1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2)
-                Thread.sleep(5000);                                                             //Still able to use the sleep method for letting the motor spin for 2 seconds(this value can be change)
+                Thread.sleep(1000);                                                             //Still able to use the sleep method for letting the motor spin for 2 seconds(this value can be change)
             }catch (IOException e){                                                             //the sleep is temporary
                 System.out.println("Cannot find /dev/servoblaster");
             }
