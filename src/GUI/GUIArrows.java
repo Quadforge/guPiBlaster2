@@ -13,6 +13,7 @@ import java.text.DecimalFormat;
  * Created by NkemOhanenye on 3/24/17.
  */
 public class GUIArrows {
+
     /**
      * makes the JPanel global variables
      */
@@ -68,7 +69,7 @@ public class GUIArrows {
         /**
          * adds an image to the upbutton
          */
-        ImageIcon upArrow = new ImageIcon("/guPiBlaster2/src/upArrow.png");
+        ImageIcon upArrow = new ImageIcon(getClass().getResource("GUI/upArrow.png"));
 
         /**
          * makes upbutton a global variable
@@ -87,7 +88,7 @@ public class GUIArrows {
         /**
          * adds an image to the downbutton
          */
-        ImageIcon downArrow = new ImageIcon("/guPiBlaster2/src/downArrow.png");
+        ImageIcon downArrow = new ImageIcon(getClass().getResource("GUI/downArrow.png"));
 
         /**
          * makes downbutton a global variable
@@ -197,12 +198,12 @@ class GUIAS {
     /**
      * creates the auto and the stop buttons
      */
-    private JButton autobutton;
-    private JButton stopbutton;
+    private JButton autoButton;
+    private JButton stopButton;
     /**
-     * creates the aspanel
+     * creates the asPanel
      */
-    private JPanel aspanel;
+    private JPanel asPanel;
 
     public GUIAS(){
         /**
@@ -214,33 +215,33 @@ class GUIAS {
         /**
          * creates a panel for the auto and stop and creates the layout
          */
-        aspanel = new JPanel();
-        aspanel.setLayout(new GridLayout(1, 2,10,10));
+        asPanel = new JPanel();
+        asPanel.setLayout(new GridLayout(1, 2,10,10));
         /**
          * adds the buttons to the panel
          */
-        aspanel.add(autobutton);
-        aspanel.add(stopbutton);
+        asPanel.add(autoButton);
+        asPanel.add(stopButton);
 
-        aspanel.setBackground(null);
+        asPanel.setBackground(null);
 
     }
     public void AutoButton(){
         Font myFont = new Font("Dialog", Font.BOLD, 28);
-        autobutton = new JButton("AUTO");
-        autobutton.setFont(myFont);
-        autobutton.setForeground(Color.black);
+        autoButton = new JButton("AUTO");
+        autoButton.setFont(myFont);
+        autoButton.setForeground(Color.black);
 
-        autobutton.addActionListener(new AutoButtonListener());
+        autoButton.addActionListener(new AutoButtonListener());
         /**
          * input code here
          */
     }
     public void StopButton(){
         Font myFont = new Font("Dialog", Font.BOLD, 28);
-        stopbutton = new JButton("STOP");
-        stopbutton.setFont(myFont);
-        stopbutton.setForeground(Color.black);
+        stopButton = new JButton("STOP");
+        stopButton.setFont(myFont);
+        stopButton.setForeground(Color.black);
         /**
          * input code here
          */
@@ -249,7 +250,7 @@ class GUIAS {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             /**
-             * Try and Catch setup for the autobutton's IOExceptions
+             * Try and Catch setup for the autoButton's IOExceptions
              */
             ServoBlaster3 auto = new ServoBlaster3();
             try {
@@ -262,17 +263,17 @@ class GUIAS {
         }
     }
     /**returns the JButton
-     *@return creates the autobutton
+     *@return creates the autoButton
      */
-    public JButton getAutobutton(){return autobutton;}
+    public JButton getAutoButton(){return autoButton;}
     /**returns the JButton
-     *@return creates the stopbutton
+     *@return creates the stopButton
      */
-    public JButton getStopbutton(){return stopbutton;}
-    /**returns the aspanel
-     * @return Aspanel the aspanel. It contains these JButtons
+    public JButton getStopButton(){return stopButton;}
+    /**returns the asPanel
+     * @return Aspanel the asPanel. It contains these JButtons
      */
-    public JPanel getAspanel(){return aspanel;}
+    public JPanel getAsPanel(){return asPanel;}
 }
 
 class GUIExit {

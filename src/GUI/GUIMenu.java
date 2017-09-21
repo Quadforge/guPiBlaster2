@@ -89,8 +89,8 @@ public class GUIMenu extends JPanel{
          */
         arrowpanel.getUpbutton().addActionListener(upButtonListener);
         arrowpanel.getDownbutton().addActionListener(downButtonListener);
-        aspanel.getAutobutton().addActionListener(autoButtonListener);
-        aspanel.getStopbutton().addActionListener(stopButtonListener);
+        aspanel.getAutoButton().addActionListener(autoButtonListener);
+        aspanel.getStopButton().addActionListener(stopButtonListener);
         exitpanel.getExitbutton().addActionListener(exitButtonListener);
 
     }
@@ -105,7 +105,7 @@ public class GUIMenu extends JPanel{
          * calls all the panels to a single panel
          */
         add(arrowpanel.getArrowpanel());
-        add(aspanel.getAspanel(), BorderLayout.NORTH);
+        add(aspanel.getAsPanel(), BorderLayout.NORTH);
         add(exitpanel.getExitpanel(), BorderLayout.EAST);
         add(datapanel.getDatapanel(), BorderLayout.WEST);
     }
