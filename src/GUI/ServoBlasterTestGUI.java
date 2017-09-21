@@ -1,14 +1,17 @@
 package GUI;
 
+import ServoBlaster.MainServoBlaster;
+
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Hashtable;
 
 public class ServoBlasterTestGUI extends JFrame {
 
     JSlider servoSlider;
 
-    JPanel mainPanel;
+    static JPanel mainPanel;
 
 //    java.util.Hashtable<Integer,JLabel> labelTable = new java.util.Hashtable<Integer,JLabel>();
     Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
@@ -46,7 +49,7 @@ public class ServoBlasterTestGUI extends JFrame {
         labelTable.put(new Integer(1900), new JLabel("1.9"));
         labelTable.put(new Integer(2000), new JLabel("2.0"));
         servoSlider.setMajorTickSpacing(100);
-        servoSlider.setMinorTickSpacing(50);
+        servoSlider.setSnapToTicks(true);
         servoSlider.setValue(minMicroSec);
         servoSlider.setPaintTicks(true);
         servoSlider.setLabelTable(labelTable);
@@ -55,7 +58,13 @@ public class ServoBlasterTestGUI extends JFrame {
         mainPanel.add(servoSlider);
     }
 
-    public static void main(String[] args){
-       new ServoBlasterTestGUI();
+    public static void main(String[] args) throws InterruptedException, IOException {
+        ServoBlasterTestGUI test = new ServoBlasterTestGUI();
+        MainServoBlaster sliderTest = new MainServoBlaster();
+        sliderTest.StartServoBlaster();
+
+        while (true) {
+            sliderTest.slider(test.servoSlider.getValue());
+        }
     }
 }

@@ -41,6 +41,16 @@ public class MainServoBlaster {
 
     }
 
+    public void slider(int sliderValue) throws InterruptedException {
+        try {
+            command = new PrintWriter(blasterDirectory);
+            command.println("2=" + sliderValue + "us");
+            command.close();
+        }catch (IOException e){
+            System.out.println("Connot find /dev/servoblaster");
+        }
+    }
+
     /*public void increasePulse(int currentPulse) throws FileNotFoundException {
         int curerntPulse = 0;
         int incrementPulse = 1;
@@ -58,7 +68,7 @@ public class MainServoBlaster {
     public static void main(String[] args) throws IOException, InterruptedException {
          MainServoBlaster ms = new MainServoBlaster();
          ms.StartServoBlaster();
-         ms.automatic();
+         //ms.automatic();
 
 
     }
