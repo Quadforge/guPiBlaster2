@@ -15,6 +15,7 @@ public class MainServoBlaster {
 
 
     private ProcessBuilder startShellFile = new ProcessBuilder("/bin/sh", "launchServod.sh");
+    private ProcessBuilder quitShellFile = new ProcessBuilder("/bin/sh", "quitServod.sh");
     private Process process;
 
     private final int[] pulseWidth = {800, 900, 1000, 1100, 1170, 1270, 1350, 1450, 1520, 1600, 1700, 1800};
@@ -22,6 +23,11 @@ public class MainServoBlaster {
     public void StartServoBlaster() throws IOException {
         startShellFile.directory(new File(servodDirectory));
         process = startShellFile.start();
+    }
+
+    public void CloseServoBlaster() throws IOException {
+        quitShellFile.directory(new File(servodDirectory));
+        process =  quitShellFile.start();
     }
 
     public void automatic() throws InterruptedException {
@@ -37,9 +43,6 @@ public class MainServoBlaster {
         }
     }
 
-    public void currentPulse(){
-
-    }
 
     public void slider(int sliderValue) throws InterruptedException {
         try {
@@ -50,20 +53,6 @@ public class MainServoBlaster {
             System.out.println("Connot find /dev/servoblaster");
         }
     }
-
-    /*public void increasePulse(int currentPulse) throws FileNotFoundException {
-        int curerntPulse = 0;
-        int incrementPulse = 1;
-
-        int newCurrentIndex;
-
-        newCurrentIndex = curerntIndex + incrementPulse;
-
-
-
-    }*/
-
-
 
     public static void main(String[] args) throws IOException, InterruptedException {
          MainServoBlaster ms = new MainServoBlaster();

@@ -16,7 +16,7 @@ public class ServoBlasterTestGUI extends JFrame {
 //    java.util.Hashtable<Integer,JLabel> labelTable = new java.util.Hashtable<Integer,JLabel>();
     Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
 
-    int minMicroSec = 1000;
+    int minMicroSec = 900;
     int maxMicroSec = 2000;
 
     double minMilliSec = minMicroSec/1000;
@@ -37,6 +37,7 @@ public class ServoBlasterTestGUI extends JFrame {
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(1,1));
         servoSlider = new JSlider(minMicroSec, maxMicroSec);
+        labelTable.put(new Integer(900), new JLabel("OFF"));
         labelTable.put(new Integer(1000), new JLabel("1.0"));
         labelTable.put(new Integer(1100), new JLabel("1.1"));
         labelTable.put(new Integer(1200), new JLabel("1.2"));
