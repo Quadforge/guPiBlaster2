@@ -65,7 +65,7 @@ public class ServoBlasterTestGUI extends JFrame {
         sliderTest.StartServoBlaster();
 
         while (true) {
-            sliderTest.slider(test.servoSlider.getValue());
+            sliderTest.Slider(test.servoSlider.getValue());
         }
     }
 }
