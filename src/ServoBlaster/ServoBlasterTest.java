@@ -1,3 +1,5 @@
+package ServoBlaster;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 import java.io.IOException;
 
-public class ServoBlasterTest extends JFrame {
+public class ServoBlaster.ServoBlasterTest extends JFrame {
     public static void main(String[] a) throws InterruptedException, IOException {
 //      //  ServoBlaster.ServoBlaster blaster = new ServoBlaster.ServoBlaster(192, 2000, 5000);
         // ServoBlaster.ServoBlaster blaster = new ServoBlaster.ServoBlaster(192, 2000, 400);
