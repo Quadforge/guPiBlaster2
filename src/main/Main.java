@@ -1,6 +1,6 @@
 package main;
 
-import com.pi4j.io.i2c.I2CFactory;
+import TestClasses.ServoBlaster.ServoBlaster3;
 
 import java.io.IOException;
 

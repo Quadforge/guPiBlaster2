@@ -1,6 +1,6 @@
 package GUI;
 
-import main.ServoBlaster3;
+import TestClasses.ServoBlaster.ServoBlaster3;
 
 import javax.swing.*;
 import java.awt.*;

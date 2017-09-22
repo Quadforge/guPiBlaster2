@@ -1,4 +1,4 @@
-package main;
+package TestClasses.ServoBlaster;
 
 import java.io.File;
 import java.io.FileNotFoundException;

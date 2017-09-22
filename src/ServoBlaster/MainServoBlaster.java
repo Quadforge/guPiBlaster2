@@ -44,7 +44,7 @@ public class MainServoBlaster {
     }
 
 
-    public void slider(int sliderValue) throws InterruptedException {
+    public void Slider(int sliderValue) throws InterruptedException {
         try {
             command = new PrintWriter(blasterDirectory);
             command.println("2=" + sliderValue + "us");

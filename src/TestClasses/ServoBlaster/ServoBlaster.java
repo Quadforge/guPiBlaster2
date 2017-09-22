@@ -1,4 +1,4 @@
-package main;
+package TestClasses.ServoBlaster;
 import java.awt.*;
 import java.io.PrintWriter;
 import java.io.File;

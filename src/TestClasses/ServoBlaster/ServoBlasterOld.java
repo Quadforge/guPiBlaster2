@@ -1,11 +1,11 @@
-package ServoBlaster;
+package TestClasses.ServoBlaster;
 
 import java.io.PrintWriter;
 import java.io.File;
 import java.io.IOException;
 
 
-public class ServoBlaster {
+public class ServoBlasterOld{
   
     private String servoBlasterDev = "/dev/servoblaster";
     private String servoBlasterDir = "/home/pi/PiBits/ServoBlaster.ServoBlaster/user";
