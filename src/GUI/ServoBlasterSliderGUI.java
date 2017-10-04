@@ -7,22 +7,18 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.Hashtable;
 
-public class ServoBlasterTestGUI extends JFrame {
+public class ServoBlasterSliderGUI extends JFrame {
 
-    JSlider servoSlider;
+    protected JSlider servoSlider;
 
-    static JPanel mainPanel;
+    private JPanel mainPanel;
 
-//    java.util.Hashtable<Integer,JLabel> labelTable = new java.util.Hashtable<Integer,JLabel>();
-    Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
+    private Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
 
-    int minMicroSec = 900;
-    int maxMicroSec = 2000;
+    protected int minMicroSec = 900;
+    protected int maxMicroSec = 2000;
 
-    double minMilliSec = minMicroSec/1000;
-    double maxMilliSec = maxMicroSec/1000;
-
-    public ServoBlasterTestGUI(){
+    public ServoBlasterSliderGUI(){
         setTitle("ServoSliderTest");
         setSize(500,100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,6 +33,7 @@ public class ServoBlasterTestGUI extends JFrame {
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(1,1));
         servoSlider = new JSlider(minMicroSec, maxMicroSec);
+
         labelTable.put(new Integer(900), new JLabel("OFF"));
         labelTable.put(new Integer(1000), new JLabel("1.0"));
         labelTable.put(new Integer(1100), new JLabel("1.1"));
@@ -49,7 +46,10 @@ public class ServoBlasterTestGUI extends JFrame {
         labelTable.put(new Integer(1800), new JLabel("1.8"));
         labelTable.put(new Integer(1900), new JLabel("1.9"));
         labelTable.put(new Integer(2000), new JLabel("2.0"));
+
+        servoSlider.setOrientation(JSlider.VERTICAL);
         servoSlider.setMajorTickSpacing(100);
+        servoSlider.setMinorTickSpacing(50);
         servoSlider.setSnapToTicks(true);
         servoSlider.setValue(minMicroSec);
         servoSlider.setPaintTicks(true);
@@ -60,12 +60,14 @@ public class ServoBlasterTestGUI extends JFrame {
     }
 
     public static void main(String[] args) throws InterruptedException, IOException {
-        ServoBlasterTestGUI test = new ServoBlasterTestGUI();
-        MainServoBlaster sliderTest = new MainServoBlaster();
-        sliderTest.StartServoBlaster();
+        /*ServoBlasterSliderGUI slider = new ServoBlasterSliderGUI();
+
+        MainServoBlaster servoBlaster = new MainServoBlaster();
+        servoBlaster.startServoBlaster();
 
         while (true) {
-            sliderTest.Slider(test.servoSlider.getValue());
-        }
+            servoBlaster.setSliderValue(slider.servoSlider.getValue());
+        }*/
+        new ServoBlasterSliderGUI();
     }
 }
