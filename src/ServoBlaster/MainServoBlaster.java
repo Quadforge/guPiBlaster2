@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class MainServoBlaster {
+public class MainServoBlaster implements ServoBlasterInterface{
     private String servodDirectory = "/home/pi/PiBits/ServoBlaster/user";
     private String devServoBlasterDirectory  = "/dev/servoblaster";
 
@@ -18,20 +18,21 @@ public class MainServoBlaster {
     private ProcessBuilder quitShellFile = new ProcessBuilder("/bin/sh", "quitServod.sh");
     private Process process;
 
-    private final int[] pulseWidth = {800, 900, 1000, 1100, 1170, 1270, 1350, 1450, 1520, 1600, 1700, 1800};
+    //private final int[] pulseWidth = {800, 900, 1000, 1100, 1170, 1270, 1350, 1450, 1520, 1600, 1700, 1800};
 
-    public void StartServoBlaster() throws IOException {
+    public void startServoBlaster() throws IOException {
         startShellFile.directory(new File(servodDirectory));
         process = startShellFile.start();
     }
 
-    public void CloseServoBlaster() throws IOException {
+    public void stopServoBlaster() throws IOException {
         quitShellFile.directory(new File(servodDirectory));
         process =  quitShellFile.start();
     }
-
-    public void automatic() throws InterruptedException {
-        for (int i = 0; i < pulseWidth.length; i++){
+    //Cant use the autoMode because it uses the sleep(), which stops the Analog to digital converter
+    //from reading data
+    public void automaticMode(int sliderValue) throws InterruptedException {
+        /*for (int i = 0; i < pulseWidth.length; i++){
             try {
                 command = new PrintWriter(blasterDirectory);
                 command.println("2=" + pulseWidth[i] + "us");
@@ -40,11 +41,11 @@ public class MainServoBlaster {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
     }
 
 
-    public void Slider(int sliderValue) throws InterruptedException {
+    public void setSliderValue(int sliderValue) throws InterruptedException {
         try {
             command = new PrintWriter(blasterDirectory);
             command.println("2=" + sliderValue + "us");
@@ -54,14 +55,4 @@ public class MainServoBlaster {
         }
     }
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-         MainServoBlaster ms = new MainServoBlaster();
-         ms.StartServoBlaster();
-         //ms.automatic();
-
-
-        //some comment
-
-
-    }
 }
