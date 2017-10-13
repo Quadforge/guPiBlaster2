@@ -6,6 +6,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class MainServoBlaster implements ServoBlasterInterface{
+  
+  
+    /*
+     
+     servodDirectory does not acurately tell someone what "dicrectory" it is. For someone without knowledge of the system, servod could refer to many different things. An example of a more descriptive name would be "ServoBlasterDirectory" or "ProgramLocation".
+     */
     private String servodDirectory = "/home/pi/PiBits/ServoBlaster/user";
     private String devServoBlasterDirectory  = "/dev/servoblaster";
 
@@ -14,10 +20,16 @@ public class MainServoBlaster implements ServoBlasterInterface{
     private PrintWriter command;
 
 
+  
     private ProcessBuilder startShellFile = new ProcessBuilder("/bin/sh", "launchServod.sh");
     private ProcessBuilder quitShellFile = new ProcessBuilder("/bin/sh", "quitServod.sh");
     private Process process;
-
+  
+  
+    /*
+     In regards to making things modular for resuse in the future. The following, while good named methods for this project; could be made more naming genetic. This avoids the copying of code with different names, for other possible use cases. An example of a more generic name would be "startProgram" additionally, servodDirectory could be changed to "progeamDirectory" etc as mentioned above.
+     */
+  
     public void startServoBlaster() throws IOException {
         startShellFile.directory(new File(servodDirectory));
         process = startShellFile.start();
