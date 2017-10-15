@@ -12,17 +12,14 @@ public class MainServoBlaster implements ServoBlaster.ServoBlasterInterface, Ser
      An example of a more descriptive name would be "ServoBlasterDirectory" or "ProgramLocation".
      */
 
-    private String servodDirectory = "/home/pi/PiBits/ServoBlaster/user";
-    private String devServoBlasterDirectory  = "/dev/servoblaster";
+    private String servodFileDirectory = "/home/pi/PiBits/ServoBlaster/user";
+    private String devFileServoBlasterDirectory  = "/dev/servoblaster";
 
-    private File startDirectory = new File(servodDirectory);
-    private File blasterDirectory = new File(devServoBlasterDirectory);
-    private PrintWriter command;
-
-
+    private File blasterDirectory = new File(devFileServoBlasterDirectory);
+    private PrintWriter commandToServod;
   
-    private ProcessBuilder startShellFile = new ProcessBuilder("/bin/sh", "launchServod.sh");
-    private ProcessBuilder quitShellFile = new ProcessBuilder("/bin/sh", "quitServod.sh");
+    private ProcessBuilder startServodShellFile = new ProcessBuilder("/bin/sh", "launchServod.sh");
+    private ProcessBuilder quitServodShellFile = new ProcessBuilder("/bin/sh", "quitServod.sh");
     private Process process;
   
   
@@ -34,21 +31,21 @@ public class MainServoBlaster implements ServoBlaster.ServoBlasterInterface, Ser
      servodDirectory could be changed to "progeamDirectory" etc as mentioned above.
      */
   
-    public void openApplication() throws IOException {
-        startShellFile.directory(new File(servodDirectory));
-        process = startShellFile.start();
+    public void startProgram() throws IOException {
+        startServodShellFile.directory(new File(servodFileDirectory));
+        process = startServodShellFile.start();
     }
 
-    public void endApplication() throws IOException {
-        quitShellFile.directory(new File(servodDirectory));
-        process =  quitShellFile.start();
+    public void endProgram() throws IOException {
+        quitServodShellFile.directory(new File(servodFileDirectory));
+        process =  quitServodShellFile.start();
     }
 
     public void setSliderValue(int sliderValue) throws InterruptedException {
         try {
-            command = new PrintWriter(blasterDirectory);
-            command.println("2=" + sliderValue + "us");
-            command.close();
+            commandToServod = new PrintWriter(blasterDirectory);
+            commandToServod.println("2=" + sliderValue + "us");
+            commandToServod.close();
         }catch (IOException e){
             System.out.println("Connot find /dev/servoblaster");
         }

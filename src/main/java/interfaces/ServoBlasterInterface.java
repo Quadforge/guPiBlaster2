@@ -16,9 +16,9 @@ import java.io.IOException;
 
 public interface ServoBlasterInterface<T>  {
 
-    void openApplication() throws IOException;
+    void startProgram() throws IOException;
 
-    void endApplication () throws IOException;
+    void endProgram () throws IOException;
 
 
 }
