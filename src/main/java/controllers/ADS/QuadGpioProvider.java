@@ -1,4 +1,4 @@
-package main;
+package ADS;
 
 import com.pi4j.gpio.extension.ads.ADS1015GpioProvider;
 import com.pi4j.io.gpio.GpioProvider;
@@ -12,10 +12,6 @@ public class QuadGpioProvider extends ADS1015GpioProvider{
     public QuadGpioProvider(int busNumber, int address) throws UnsupportedBusNumberException, IOException{
         super(busNumber, address);
     }
-
-   // public QuadGpioProvider(I2CBus bus, int address) throws IOException{
-   //     super(bus, address);
-   // }
 
     @Override
     public double getImmediateValue(Pin pin) throws IOException{

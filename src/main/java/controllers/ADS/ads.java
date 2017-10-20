@@ -1,4 +1,4 @@
-package main;
+package ADS;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -18,7 +18,7 @@ public class ads {
 
     private GpioPinAnalogInput[] myInputs;
 
-    public void ADs ()throws InterruptedException, UnsupportedBusNumberException, IOException {
+    public void ADS ()throws InterruptedException, UnsupportedBusNumberException, IOException {
 
         System.out.println("<--Pi4J--> ADS1015 GPIO Example ... started.");
 
