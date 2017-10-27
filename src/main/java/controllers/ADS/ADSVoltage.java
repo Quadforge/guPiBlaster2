@@ -5,20 +5,18 @@ import com.pi4j.gpio.extension.ads.ADS1015Pin;
 import com.pi4j.gpio.extension.ads.ADS1x15GpioProvider;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
-import com.pi4j.io.gpio.GpioPinAnalog;
 import com.pi4j.io.gpio.GpioPinAnalogInput;
 import com.pi4j.io.gpio.event.GpioPinAnalogValueChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerAnalog;
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CFactory;
-import com.pi4j.jni.I2C;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class ADSVoltage {
 
-    private GpioController controller = GpioFactory.getInstance();
+    private GpioController gpio = GpioFactory.getInstance();
     private GpioPinListenerAnalog listener;
     //private GpioPinAnalogInput myInput[];
     final DecimalFormat df = new DecimalFormat("#.##");
@@ -26,14 +24,14 @@ public class ADSVoltage {
 
     public double Voltage;
 
-    public void readVoltage() throws IOException, I2CFactory.UnsupportedBusNumberException {
+    public void readVoltage() throws IOException, I2CFactory.UnsupportedBusNumberException, InterruptedException {
         ADS1015GpioProvider gpioProvider = new QuadGpioProvider(I2CBus.BUS_1, ADS1015GpioProvider.ADS1015_ADDRESS_0x48);
 
         GpioPinAnalogInput myInputs[] = {
-                controller.provisionAnalogInputPin(gpioProvider, ADS1015Pin.INPUT_A0, "A0"),
-                controller.provisionAnalogInputPin(gpioProvider, ADS1015Pin.INPUT_A1, "A1"),
-                controller.provisionAnalogInputPin(gpioProvider, ADS1015Pin.INPUT_A2, "A2"),
-                controller.provisionAnalogInputPin(gpioProvider, ADS1015Pin.INPUT_A3, "A3")};
+                gpio.provisionAnalogInputPin(gpioProvider, ADS1015Pin.INPUT_A0, "A0"),
+                gpio.provisionAnalogInputPin(gpioProvider, ADS1015Pin.INPUT_A1, "A1"),
+                gpio.provisionAnalogInputPin(gpioProvider, ADS1015Pin.INPUT_A2, "A2"),
+                gpio.provisionAnalogInputPin(gpioProvider, ADS1015Pin.INPUT_A3, "A3")};
 
         //sets all analog inputs with the gain amplifier value of +- 4.096V
         gpioProvider.setProgrammableGainAmplifier(ADS1x15GpioProvider.ProgrammableGainAmplifierValue.PGA_4_096V, ADS1015Pin.ALL);
@@ -61,5 +59,9 @@ public class ADSVoltage {
         myInputs[1].addListener(listener);  //A1
         myInputs[2].addListener(listener);  //A2
         myInputs[3].addListener(listener);  //A3
+
+        Thread.sleep(5000);
+
+        gpio.shutdown();
     }
 }
