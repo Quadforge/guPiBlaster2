@@ -18,9 +18,7 @@ public class ADSVoltage {
 
     private GpioController gpio = GpioFactory.getInstance();
     private GpioPinListenerAnalog listener;
-    //private GpioPinAnalogInput myInput[];
     final DecimalFormat df = new DecimalFormat("#.##");
-
 
     public double Voltage;
 

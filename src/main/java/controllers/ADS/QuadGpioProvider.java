@@ -16,12 +16,17 @@ public class QuadGpioProvider extends ADS1015GpioProvider{
     @Override
     public double getImmediateValue(Pin pin) throws IOException{
         // Start with default values
-        int config = ADS1x15_REG_CONFIG_CQUE_NONE    | // Disable the comparator (default val)
+        /*int config = ADS1x15_REG_CONFIG_CQUE_NONE    | // Disable the comparator (default val)
                 ADS1x15_REG_CONFIG_CLAT_NONLAT  | // Non-latching (default val)
                 ADS1x15_REG_CONFIG_CPOL_ACTVLOW | // Alert/Rdy active low   (default val)
                 ADS1x15_REG_CONFIG_CMODE_TRAD   | // Traditional comparator (default val)
                 ADS1x15_REG_CONFIG_DR_1600SPS   | // 1600 samples per second (default)
-                ADS1x15_REG_CONFIG_MODE_SINGLE;   // Single-shot mode (default)
+                ADS1x15_REG_CONFIG_MODE_SINGLE;   // Single-shot mode (default)*/
+        int config = ADS1x15_REG_CONFIG_CQUE_NONE |
+                ADS1x15_REG_CONFIG_DR_1600SPS     |
+                ADS1x15_REG_CONFIG_MUX_DIFF_0_1   |
+                ADS1x15_REG_CONFIG_MUX_DIFF_2_3;
+
 
         // Set PGA/voltage range
         config |= pga[pin.getAddress()].getConfigValue();  // +/- 6.144V range (limited to VDD +0.3V max!)
