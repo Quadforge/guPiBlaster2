@@ -9,7 +9,7 @@ import java.util.Hashtable;
 
 public class ServoBlasterSliderGUI extends JFrame {
 
-    protected JSlider servoSlider;
+    public JSlider servoSlider;
 
     private JPanel mainPanel;
 
@@ -62,11 +62,11 @@ public class ServoBlasterSliderGUI extends JFrame {
         /*ServoBlasterSliderGUI slider = new ServoBlasterSliderGUI();
 
         MainServoBlaster servoBlaster = new MainServoBlaster();
-        servoBlaster.startServoBlaster();
+        servoBlaster.startProgram();
 
         while (true) {
             servoBlaster.setSliderValue(slider.servoSlider.getValue());
         }*/
-        new ServoBlasterSliderGUI();
+        //new ServoBlasterSliderGUI();
     }
 }
