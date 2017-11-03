@@ -7,7 +7,7 @@ import com.pi4j.io.gpio.impl.PinImpl;
 
 import java.util.EnumSet;
 
-public class ADS1015PinDifferential {
+public class ADS1015DifferentialPins {
 
     public static final Pin INPUT_A0_A1 = createAnalogInputPin(0, "DIFF INPUT 0 AND 1");
     public static final Pin INPUT_A2_A3 = createAnalogInputPin(1, "DIFF INPUT 2 AND 3");
