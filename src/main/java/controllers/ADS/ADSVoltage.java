@@ -18,10 +18,9 @@ import com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException;
 
 public class ADSVoltage {
 
+    public double voltage;
 
     public void DifferentialReadings() throws InterruptedException, UnsupportedBusNumberException, IOException {
-
-        System.out.println("<--Pi4J--> ADS1015 GPIO Example ... started.");
 
         // number formatters
         final DecimalFormat df = new DecimalFormat("#.##");
@@ -35,8 +34,8 @@ public class ADSVoltage {
 
         // provision gpio analog input pins from ADS1015
         GpioPinAnalogInput differentialInputs[] = {
-                gpio.provisionAnalogInputPin(DIFF, ADS1015PinDifferential.INPUT_A0_A1, "A0-A1"),
-                gpio.provisionAnalogInputPin(DIFF, ADS1015PinDifferential.INPUT_A2_A3, "A2-A3"),
+                gpio.provisionAnalogInputPin(DIFF, ADS1015DifferentialPins.INPUT_A0_A1, "A0-A1"),
+                gpio.provisionAnalogInputPin(DIFF, ADS1015DifferentialPins.INPUT_A2_A3, "A2-A3"),
 
         };
 
@@ -77,7 +76,7 @@ public class ADSVoltage {
                 double percent =  ((value * 100) / ADS1015GpioProvider.ADS1015_RANGE_MAX_VALUE);
 
                 // approximate voltage ( *scaled based on PGA setting )
-                double voltage = DIFF.getProgrammableGainAmplifier(event.getPin()).getVoltage() * (percent/100);
+                 voltage = DIFF.getProgrammableGainAmplifier(event.getPin()).getVoltage() * (percent/100);
 
                 // display output
                 System.out.println(" (" + event.getPin().getName() +") : VOLTS=" + df.format(voltage) + "  | PERCENT=" + pdf.format(percent) + "% | RAW=" + value + "       ");
@@ -90,13 +89,13 @@ public class ADSVoltage {
 
 
         // keep program running for 10 minutes
-        Thread.sleep(600000);
+        /*Thread.sleep(600000);
 
         // stop all GPIO activity/threads by shutting down the GPIO controller
         // (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
         gpio.shutdown();
 
-        System.out.println("Exiting ADS1015GpioExample");
+        System.out.println("Exiting ADS1015GpioExample");*/
     }
 }
 
