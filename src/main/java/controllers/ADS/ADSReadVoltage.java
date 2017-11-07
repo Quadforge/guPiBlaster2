@@ -19,6 +19,7 @@ public class ADSReadVoltage {
     protected double voltage;
     private double value;
     private double percent;
+    public double readVolt;
     public GpioPinListener listener;
 
     protected final DecimalFormat df = new DecimalFormat("#.##");
@@ -43,20 +44,22 @@ public class ADSReadVoltage {
 
         DIFFERENTIAL_PROVIDER.setMonitorInterval(100);
     }
+    public void setListenerVoltageValue(GpioPinAnalogValueChangeEvent gpioEvent){
+        value = gpioEvent.getValue();
+        percent = ((value * 100) / ADS1015GpioProvider.ADS1015_RANGE_MAX_VALUE);
+        voltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage()* (percent/100);
+
+    }
     public void analogPinValueListener(){
          listener = new GpioPinListenerAnalog() {
             @Override
             public void handleGpioPinAnalogValueChangeEvent(GpioPinAnalogValueChangeEvent event) {
                 setListenerVoltageValue(event);
-                System.out.println(" (" + event.getPin().getName() +") : VOLTS=" + df.format(voltage));
+                double volt = voltage;
+                readVolt = volt;
+                //System.out.println(" (" + event.getPin().getName() +") : VOLTS=" + df.format(voltage));
+
             }
         };
     }
-    public double setListenerVoltageValue(GpioPinAnalogValueChangeEvent gpioEvent){
-        value = gpioEvent.getValue();
-        percent = ((value * 100) / ADS1015GpioProvider.ADS1015_RANGE_MAX_VALUE);
-        return voltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage()* (percent/100);
-
-    }
-
 }

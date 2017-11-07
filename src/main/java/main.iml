@@ -8,5 +8,18 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../../../Libraries/pi4j-1.1/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../../../../Libraries/pi4j-1.1/lib" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../../../../Libraries/pi4j-1.1/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../../../../Libraries/pi4j-1.1/lib" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
   </component>
 </module>

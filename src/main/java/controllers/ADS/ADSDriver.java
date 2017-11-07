@@ -9,12 +9,11 @@ import java.io.IOException;
 public class ADSDriver {
 
     public static void main(String[] args) throws IOException, I2CFactory.UnsupportedBusNumberException, InterruptedException {
-        /*ADSReadVoltage ADS = new ADSReadVoltage();
+        ADSReadVoltage ADS = new ADSReadVoltage();
         ADS.analogPinValueListener();
         ADS.diffAnalogInputs[0].addListener(ADS.listener);
         ADS.diffAnalogInputs[1].addListener(ADS.listener);
-        System.out.println(ADS.df.format(ADS.voltage));*/
-        ADSVoltage ads = new ADSVoltage();
-        ads.DifferentialReadings();
+        System.out.println(ADS.readVolt);
+        System.out.println(ADS.df.format(ADS.readVolt));
     }
 }
