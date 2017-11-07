@@ -1,5 +1,6 @@
 package ADS;
 
+import HelperFunctions.WriteToText;
 import com.pi4j.gpio.extension.ads.ADS1015GpioProvider;
 import com.pi4j.gpio.extension.ads.ADS1015Pin;
 import com.pi4j.gpio.extension.ads.ADS1x15GpioProvider;
@@ -19,6 +20,7 @@ public class ADSReadVoltage {
     protected double voltage;
     private double value;
     private double percent;
+    WriteToText writeToText = new WriteToText();
     public GpioPinListener listener;
 
     protected final DecimalFormat df = new DecimalFormat("#.##");
@@ -48,7 +50,9 @@ public class ADSReadVoltage {
             @Override
             public void handleGpioPinAnalogValueChangeEvent(GpioPinAnalogValueChangeEvent event) {
                 setListenerVoltageValue(event);
-                System.out.println(" (" + event.getPin().getName() +") : VOLTS=" + df.format(voltage));
+                //System.out.println(" (" + event.getPin().getName() +") : VOLTS=" + df.format(voltage));
+                writeToText.writer(String.valueOf(voltage), "VoltageReadings");
+
             }
         };
     }
