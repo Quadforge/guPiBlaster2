@@ -1,4 +1,4 @@
-package ADS;
+package ADS.Current;
 
 import com.pi4j.io.i2c.*;
 

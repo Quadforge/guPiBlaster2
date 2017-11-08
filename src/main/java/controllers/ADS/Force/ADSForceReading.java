@@ -1,5 +1,6 @@
-package ADS;
+package ADS.Force;
 
+import ADS.Force.ADSForce;
 import com.pi4j.io.i2c.I2CFactory;
 
 import java.io.IOException;
