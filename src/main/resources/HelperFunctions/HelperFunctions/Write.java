@@ -6,15 +6,13 @@
  */
 package HelperFunctions;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+import java.io.*;
 
-public class WriteToText{
+public class Write {
 
-    public static void writer(String line, String line2, String fileName) throws FileNotFoundException{
+    public static void writer(String line, String line2, String path, String fileName) throws FileNotFoundException{
 
-        File create = new File("resources/" + fileName);
+        File create = new File(path + "/" + fileName + ".txt");
         PrintStream output = new PrintStream(create);             //allows user to write to file
         output.println(line);           //writes to file
         output.println(line2);
