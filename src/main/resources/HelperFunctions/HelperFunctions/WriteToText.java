@@ -6,22 +6,23 @@
  */
 package HelperFunctions;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
-public class WriteToText {
+public class WriteToText{
 
-    public static void writer(String text, String fileName){
+    public static void writer(String line, String line2, String fileName) throws FileNotFoundException{
 
-        try{
+        File create = new File("resources/" + fileName);
+        PrintStream output = new PrintStream(create);             //allows user to write to file
+        output.println(line);           //writes to file
+        output.println(line2);
+        output.close();             //closes the file after writing
 
-            PrintStream makeWriter = new PrintStream(fileName);             //allows user to write to file
-            makeWriter.println(text);           //writes to file
-            makeWriter.close();             //closes the file after writing
-
-        }catch (Exception e){               //catches exception error
-
-            System.out.println("File Not Found.");
-
-        }
     }
 }
+
+/*
+ * Requires the user to throw a FileNotFoundException within the file using the function.
+ */
