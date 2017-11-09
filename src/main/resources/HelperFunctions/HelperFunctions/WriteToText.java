@@ -10,7 +10,7 @@ import java.io.PrintStream;
 
 public class WriteToText {
 
-    public static void writer(String text, String fileName){
+    public void writer(String text, String fileName){
 
         try{
 
