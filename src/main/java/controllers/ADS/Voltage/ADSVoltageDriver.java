@@ -5,7 +5,7 @@ import com.pi4j.io.i2c.*;
 
 import java.io.IOException;
 
-public class ADSDriver {
+public class ADSVoltageDriver {
 
     public static void main(String[] args) throws IOException, I2CFactory.UnsupportedBusNumberException, InterruptedException {
         ADSReadVoltage ADS = new ADSReadVoltage();

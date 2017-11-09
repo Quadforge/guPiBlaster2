@@ -20,7 +20,7 @@ import com.pi4j.jni.I2C;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class ADSCurrent{
+public class ADSCurrentOld{
 
     public void DifferentialReadings() throws InterruptedException, UnsupportedBusNumberException, IOException {
 
