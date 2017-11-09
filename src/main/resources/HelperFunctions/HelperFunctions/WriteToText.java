@@ -6,9 +6,18 @@
  */
 package HelperFunctions;
 
+import java.io.File;
 import java.io.PrintStream;
 
 public class WriteToText {
+    private double value;
+    private String textFileName = "Voltage.txt";
+
+    private String outputDirectory = "src/DataOutput";
+
+    private File dataDirectory = new File(outputDirectory);
+
+    private PrintStream writeToText;
 
     public void writer(String text, String fileName){
 
