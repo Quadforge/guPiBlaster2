@@ -1,5 +1,7 @@
-package ADS;
+package ADS.Force;
 
+import ADS.ADS1015DifferentialPins;
+import ADS.DifferentialGpioProvider;
 import com.pi4j.gpio.extension.ads.ADS1015GpioProvider;
 import com.pi4j.gpio.extension.ads.ADS1015Pin;
 import com.pi4j.gpio.extension.ads.ADS1x15GpioProvider;
@@ -18,7 +20,7 @@ import com.pi4j.jni.I2C;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class ADSForce{
+public class ADSForceOld{
 
     public void DifferentialReadings() throws InterruptedException, UnsupportedBusNumberException, IOException {
 
@@ -34,7 +36,7 @@ public class ADSForce{
 
         // provision gpio analog input pins from ADS1015
         GpioPinAnalogInput differentialInputs[] = {
-                gpio.provisionAnalogInputPin(DIFF, ADS1015PinDifferential.INPUT_A0_A1, "A0-A1"), //force pins
+                gpio.provisionAnalogInputPin(DIFF, ADS1015DifferentialPins.INPUT_A0_A1, "A0-A1"), //force pins
         };
 
         // PGA value PGA_4_096V is a 1:1 scaled input,
@@ -78,4 +80,5 @@ public class ADSForce{
 
         System.out.println("Exiting ADS1015GpioExample");
     }
+
 }

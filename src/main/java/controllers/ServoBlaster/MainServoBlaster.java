@@ -1,10 +1,13 @@
 package ServoBlaster;
 
+import Interfaces.ServoBlasterInterface;
+import Interfaces.setValueInterface;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class MainServoBlaster implements ServoBlaster.ServoBlasterInterface, ServoBlaster.setValueInterface {
+public class MainServoBlaster implements ServoBlasterInterface, setValueInterface {
   
     /*
      servodDirectory does not acurately tell someone what "dicrectory" it is.

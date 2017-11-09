@@ -1,4 +1,4 @@
-package ServoBlaster;
+package Interfaces;
 
 import java.io.IOException;
 
