@@ -2,7 +2,6 @@ package ADS.Voltage;
 
 import ADS.ADS1015DifferentialPins;
 import ADS.DifferentialGpioProvider;
-import HelperFunctions.Write;
 import Interfaces.ADSInterface;
 import com.pi4j.gpio.extension.ads.ADS1015GpioProvider;
 import com.pi4j.gpio.extension.ads.ADS1015Pin;
