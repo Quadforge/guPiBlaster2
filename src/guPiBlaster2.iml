@@ -8,15 +8,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="file:///opt/pi4j/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file:///opt/pi4j/lib" recursive="false" />
-      </library>
-    </orderEntry>
   </component>
 </module>
