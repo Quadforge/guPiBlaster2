@@ -19,13 +19,16 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class ADSReadCurrent implements ADSInterface {
-    private double baseLine;
-    private double outputSensitivity;
+    private double baseLine; //why is this not a constant?
+    private double outputSensitivity; //why is this not a constant?
     private double value;
     private double percent;
     private double voltage;
     private double current;
 
+  
+  
+  
     public GpioPinListener currentListener;
 
     protected  final DecimalFormat DF = new DecimalFormat("#.##");
@@ -44,6 +47,7 @@ public class ADSReadCurrent implements ADSInterface {
     }
 
     @Override
+  //Function called setupGpio() but what would occur if someone used this and wanted a single ended reading? From reading the inner methods, I am assuming that it is being setup in Differential Mode. If it is not, then the name is fine as is. However, if it is then the name should reflect this. Someone using this method might think it sets up the Gpio in single reading mode. 
     public void setupGpio() {
         DIFFERENTIAL_PROVIDER.setProgrammableGainAmplifier(
                 ADS1x15GpioProvider.ProgrammableGainAmplifierValue.PGA_4_096V, ADS1015Pin.ALL);
@@ -64,9 +68,10 @@ public class ADSReadCurrent implements ADSInterface {
     }
 
     @Override
+  //The function below is doing allot of "actions". While returning a current value. The name of the function does not acurately represent what is going to occur.
     public double setListerValue(GpioPinAnalogValueChangeEvent gpioEvent) {
-        baseLine = 0.5;
-        outputSensitivity = 0.133;
+        baseLine = 0.5; //why is this set here? Could be declared as a constant or set with a constructor.
+        outputSensitivity = 0.133; //why is this set here? Could be declared as a constant or set with a constructor.
         value = gpioEvent.getValue();
         percent = ((value * 100) / ADS1015GpioProvider.ADS1015_RANGE_MAX_VALUE);
         voltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage();
