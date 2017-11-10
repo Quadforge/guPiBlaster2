@@ -24,7 +24,7 @@ public class ADSReadVoltage implements ADSInterface {
     private double value;
     private double percent;
 
-    Write write = new Write();
+
 
     public GpioPinListener listener;
 

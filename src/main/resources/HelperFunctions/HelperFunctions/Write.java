@@ -10,22 +10,11 @@ import java.io.*;
 
 public class Write {
 
-<<<<<<< HEAD
-    public static void writer(String line, String path, String fileName, String directoryType) throws FileNotFoundException{
+    public static void writer(String line, String path, String fileName, String directoryType) throws FileNotFoundException {
 
         File create = new File(path + "/" + fileName + "." + directoryType);
         PrintStream output = new PrintStream(create);             //allows user to write to file
         output.println(line);           //writes to file
-=======
-    public static void writer(String line, String line2, String path, String fileName) throws FileNotFoundException{
-
-        File create = new File(path + "/" + fileName + ".txt");
-        PrintStream output = new PrintStream(create);             //allows user to write to file
-        output.println(line);           //writes to file
-        output.println(line2);
->>>>>>> origin/master
-        output.close();             //closes the file after writing
-
     }
 }
 
