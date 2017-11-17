@@ -1,5 +1,3 @@
-package GUI;
-
 import ADS.Voltage.ADSReadVoltage;
 import HelperFunctions.ReturnADSReadings;
 import com.pi4j.io.i2c.I2CFactory;
