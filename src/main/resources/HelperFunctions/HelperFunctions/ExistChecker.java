@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class ExistChecker {
 
-    private ReadAndWrite confirm = new ReadAndWrite();
+    /*private ReadAndWrite confirm = new ReadAndWrite();
     private String fileName = confirm.getFileName();
     private String fileType = confirm.getFileType();
     private File file = new File(fileName + fileType);
@@ -61,7 +61,7 @@ public class ExistChecker {
                     }
                 });*/
                 //JLabel label = new JLabel(confirm.getFileName() + "(1)" + confirm.getFileType());
-                Object[] word = {confirm.getFileName() + "(1)" + confirm.getFileType()};
+                /*Object[] word = {confirm.getFileName() + "(1)" + confirm.getFileType()};
                 Object[] page2 = {rename, cancel};
                 JOptionPane.showInputDialog(
                         null,
@@ -103,5 +103,5 @@ public class ExistChecker {
         }else {
             confirm.write(confirm.getWords());
         }
-    }
+    }*/
 }
