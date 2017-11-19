@@ -14,7 +14,7 @@ public class ADSVoltageDriver {
         while (true){
             ADS.analogPinValueListener();
             ADS.diffAnalogInputs[0].addListener(ADS.listener);
-            Read.read("voltage");
+            Read.read();
         }
 
         //ADS.diffAnalogInputs[1].addListener(ADS.listener);
