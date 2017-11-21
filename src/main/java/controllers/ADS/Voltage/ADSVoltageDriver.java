@@ -1,9 +1,7 @@
 package ADS.Voltage;
 
-import ADS.Voltage.ADSReadVoltage;
 import HelperFunctions.ReadAndWriteText;
-import HelperFunctions.ReturnADSReadings;
-import com.pi4j.io.i2c.*;
+import com.pi4j.io.i2c.I2CFactory;
 
 import java.io.IOException;
 
@@ -16,7 +14,7 @@ public class ADSVoltageDriver {
         while (true){
             ADS.analogPinValueListener();
             ADS.diffAnalogInputs[0].addListener(ADS.listener);
-            Read.read("voltage");
+            Read.read();
         }
 
         //ADS.diffAnalogInputs[1].addListener(ADS.listener);

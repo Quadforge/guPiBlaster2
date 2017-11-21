@@ -1,11 +1,5 @@
 package HelperFunctions;
 
-import GUI.GuPiBlaster;
-import com.pi4j.io.i2c.I2CFactory;
-
-import javax.swing.*;
-import java.io.IOException;
-
 public class ReturnADSReadings {
     public double voltage;
     double current;

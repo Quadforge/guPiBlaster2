@@ -1,6 +1,6 @@
-package GUI;
-
 import ADS.Voltage.ADSReadVoltage;
+import HelperFunctions.ReadAndWrite;
+import HelperFunctions.ReadAndWriteText;
 import HelperFunctions.ReturnADSReadings;
 import com.pi4j.io.i2c.I2CFactory;
 
@@ -21,8 +21,7 @@ public class GuPiBlaster extends JFrame {
     public JTextField currentBox, forceBox, temperatureBox, voltageBox;
     private JLabel currentLabel, forceLabel, temperatureLabel, voltageLabel;
 
-    ReturnADSReadings getReadings = new ReturnADSReadings();
-    ADSReadVoltage readVoltage = new ADSReadVoltage();
+    ReadAndWriteText readADS = new ReadAndWriteText();
 
     public GuPiBlaster(String windowTitle) throws IOException, I2CFactory.UnsupportedBusNumberException {
         setTitle(windowTitle);
@@ -33,7 +32,7 @@ public class GuPiBlaster extends JFrame {
         setVisible(true);
     }
 
-    public void buildPanel() throws IOException {
+    public void buildPanel() {
         mainPanel = new JPanel(new GridLayout(1,2));
 
         readingsPanel = new JPanel(new GridLayout(1,1));
@@ -46,19 +45,19 @@ public class GuPiBlaster extends JFrame {
         startSensors = new JButton("Start Sensor");
 
         currentLabel = new JLabel("Amps");
-        currentBox = new JTextField(String.valueOf(getReadings.getCurrent()));
+        currentBox = new JTextField();
         currentBox.setEditable(false);
 
         forceLabel = new JLabel("Newtons");
-        forceBox = new JTextField(String.valueOf(getReadings.getForce()));
+        forceBox = new JTextField();
         forceBox.setEditable(false);
 
         temperatureLabel = new JLabel("Celsius");
-        temperatureBox = new JTextField(String.valueOf(getReadings.getTemperature()));
+        temperatureBox = new JTextField();
         temperatureBox.setEditable(false);
 
         voltageLabel = new JLabel("Volts");
-        voltageBox = new JTextField(String.valueOf(getReadings.getVoltage()));
+        voltageBox = new JTextField();
         voltageBox.setEditable(false);
 
         readingsTextBoxPanel.add(currentBox);
