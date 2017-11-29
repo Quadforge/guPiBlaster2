@@ -53,8 +53,11 @@ public class ReadAndWrite {
         arry = new ArrayList<Double>();
         Scanner scnr = new Scanner(new File(directory));
         while(scnr.hasNextLine()){
-            Double str = Double.valueOf(scnr.nextLine());
-            arry.add(str);
+            String line = scnr.nextLine();
+            String[] splitStr = line.split(",");
+            for (String num : splitStr) {
+                arry.add(Double.parseDouble(num));
+            }
         }
         return arry;
     }
