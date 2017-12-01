@@ -26,9 +26,6 @@ public class ADSReadCurrent implements ADSInterface {
     private double voltage;
     private double current;
 
-  
-  
-  
     public GpioPinListener currentListener;
 
     protected  final DecimalFormat DF = new DecimalFormat("#.##");
@@ -61,7 +58,7 @@ public class ADSReadCurrent implements ADSInterface {
         currentListener = new GpioPinListenerAnalog() {
             @Override
             public void handleGpioPinAnalogValueChangeEvent(GpioPinAnalogValueChangeEvent event) {
-                setListerValue(event);
+                setListenerValue(event);
                 System.out.println(DF.format(current));
             }
         };
@@ -69,13 +66,12 @@ public class ADSReadCurrent implements ADSInterface {
 
     @Override
   //The function below is doing allot of "actions". While returning a current value. The name of the function does not acurately represent what is going to occur.
-    public double setListerValue(GpioPinAnalogValueChangeEvent gpioEvent) {
+    public void setListenerValue(GpioPinAnalogValueChangeEvent gpioEvent) {
         baseLine = 0.5; //why is this set here? Could be declared as a constant or set with a constructor.
         outputSensitivity = 0.133; //why is this set here? Could be declared as a constant or set with a constructor.
         value = gpioEvent.getValue();
         percent = ((value * 100) / ADS1015GpioProvider.ADS1015_RANGE_MAX_VALUE);
         voltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage();
         current = (voltage - baseLine) /outputSensitivity;
-        return current;
     }
 }

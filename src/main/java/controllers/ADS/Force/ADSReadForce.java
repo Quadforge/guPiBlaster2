@@ -57,20 +57,18 @@ public class ADSReadForce implements ADSInterface {
         listener = new GpioPinListenerAnalog() {
             @Override
             public void handleGpioPinAnalogValueChangeEvent(GpioPinAnalogValueChangeEvent event) {
-                setListerValue(event);
+                setListenerValue(event);
                 System.out.println(DF.format(force));
             }
         };
     }
 
-    @Override
-    public double setListerValue(GpioPinAnalogValueChangeEvent gpioEvent) {
+    public void setListenerValue(GpioPinAnalogValueChangeEvent gpioEvent) {
         baseLine = 12.25;
         outputSensitivity = -4.9;
         value = gpioEvent.getValue();
         percent = ((value * 100) / ADS1015GpioProvider.ADS1015_RANGE_MAX_VALUE);
         voltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage() * (percent/100);
         force = (voltage * outputSensitivity) + baseLine;
-        return force;
     }
 }
