@@ -16,6 +16,7 @@ import com.pi4j.io.gpio.event.GpioPinListenerAnalog;
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CFactory;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
@@ -33,13 +34,14 @@ public class ADSReadVoltage implements ADSInterface {
     private final GpioController GPIO = GpioFactory.getInstance();
 
     private final DifferentialGpioProvider DIFFERENTIAL_PROVIDER = new DifferentialGpioProvider(I2CBus.BUS_1, ADS1015GpioProvider.ADS1015_ADDRESS_0x48);
-    protected GpioPinAnalog diffAnalogInputs[] = {
+    public GpioPinAnalog[] diffAnalogInputs = {
             GPIO.provisionAnalogInputPin(DIFFERENTIAL_PROVIDER, ADS1015DifferentialPins.INPUT_A0_A1, "A0-A1"),
             GPIO.provisionAnalogInputPin(DIFFERENTIAL_PROVIDER, ADS1015DifferentialPins.INPUT_A2_A3, "A2-A3"),
     };
 
     public ADSReadVoltage() throws IOException, I2CFactory.UnsupportedBusNumberException {
         setupGpio();
+        analogPinValueListener();
     }
 
     public void setupGpio(){
@@ -57,8 +59,11 @@ public class ADSReadVoltage implements ADSInterface {
             public void handleGpioPinAnalogValueChangeEvent(GpioPinAnalogValueChangeEvent event) {
                 setListerValue(event);
                 writeTotext.setFileName("Voltage");
-                writeTotext.setDataValue(Double.parseDouble(DF.format(voltage)));
-
+                try {
+                    writeTotext.write2(voltage);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         };
     }
