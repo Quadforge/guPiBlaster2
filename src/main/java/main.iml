@@ -87,5 +87,46 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="guPiBlaster2" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/pi4j-1.1/lib/junit.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-core.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-device.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-example.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-service.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-core-javadoc.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-core-sources.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-device-javadoc.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-device-sources.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-gpio-extension.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-example-javadoc.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-example-sources.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-service-javadoc.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-service-sources.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-gpio-extension-javadoc.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-gpio-extension-sources.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://D:/pi4j-1.1/lib/junit.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-core.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-device.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-example.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-service.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-core-javadoc.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-core-sources.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-device-javadoc.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-device-sources.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-gpio-extension.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-example-javadoc.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-example-sources.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-service-javadoc.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-service-sources.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-gpio-extension-javadoc.jar!/" />
+          <root url="jar://D:/pi4j-1.1/lib/pi4j-gpio-extension-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

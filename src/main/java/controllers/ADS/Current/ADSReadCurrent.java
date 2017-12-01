@@ -23,7 +23,7 @@ public class ADSReadCurrent implements ADSInterface {
     private double outputSensitivity; //why is this not a constant?
     private double value;
     private double percent;
-    private double voltage;
+    private double rawVoltage;
     private double current;
 
     public GpioPinListener currentListener;
@@ -71,7 +71,12 @@ public class ADSReadCurrent implements ADSInterface {
         outputSensitivity = 0.133; //why is this set here? Could be declared as a constant or set with a constructor.
         value = gpioEvent.getValue();
         percent = ((value * 100) / ADS1015GpioProvider.ADS1015_RANGE_MAX_VALUE);
-        voltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage();
-        current = (voltage - baseLine) /outputSensitivity;
+        rawVoltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage()* (percent/100);
+        current = (rawVoltage - baseLine) /outputSensitivity;
+    }
+
+    public double getDataValue(){
+
+        return current;
     }
 }
