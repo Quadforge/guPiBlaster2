@@ -10,7 +10,7 @@ import java.io.*;
 
 public class ReadAndWriteText {
 
-    private String dataOutpuPath = "DataOutput/";
+    private String dataOutpuPath ="DataOutput/";
     private String fileExtension = ".txt";
 
     private File filePath;
@@ -40,8 +40,9 @@ public class ReadAndWriteText {
         return DataValue;
     }
 
-    public void setDataValue(double dataValue) {
+    public void setDataValue(double dataValue) throws FileNotFoundException {
         DataValue = dataValue;
+        write();
     }
 
     public void write() throws FileNotFoundException {
@@ -51,13 +52,13 @@ public class ReadAndWriteText {
         writeToText.close();
     }
 
-    public void read() throws IOException {
+    /*public void read() throws IOException {
         fileReader = new FileReader( dataOutpuPath + fileReader + fileExtension);
         bufferedReader = new BufferedReader(fileReader);
         while ((linesToRead = bufferedReader.readLine()) != null){
             System.out.println(linesToRead);
         }
-    }
+    }*/
 
     public void write2(double dataValue) throws FileNotFoundException {
         dataOut = new File(dataOutpuPath + getFileName() + fileExtension);
@@ -65,6 +66,7 @@ public class ReadAndWriteText {
         ps = new PrintStream(fos);
         System.setOut(ps);
         System.out.println(dataValue);
+        ps.close();
 
     }
 }
