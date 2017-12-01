@@ -10,7 +10,7 @@ import java.io.*;
 
 public class ReadAndWriteText {
 
-    private String dataOutpuPath = "DataOutput/";
+    private String dataOutpuPath ="DataOutput/";
     private String fileExtension = ".txt";
 
     private File filePath;
@@ -24,6 +24,11 @@ public class ReadAndWriteText {
     private String FileName;
     private double DataValue;
 
+    //SystenOut
+    File dataOut;
+    FileOutputStream fos;
+    PrintStream ps;
+
     public String getFileName() {
         return FileName;
     }
@@ -35,38 +40,33 @@ public class ReadAndWriteText {
         return DataValue;
     }
 
-    public void setDataValue(double dataValue) {
+    public void setDataValue(double dataValue) throws FileNotFoundException {
         DataValue = dataValue;
+        write();
     }
 
     public void write() throws FileNotFoundException {
-        filePath = new File(dataOutpuPath + FileName + fileExtension);
+        filePath = new File(dataOutpuPath + getFileName() + fileExtension);
         writeToText = new PrintWriter(filePath);
-        writeToText.println(DataValue + "\n");
+        writeToText.println(getDataValue() + "\n");
         writeToText.close();
     }
 
-    public void read() throws IOException {
+    /*public void read() throws IOException {
         fileReader = new FileReader( dataOutpuPath + fileReader + fileExtension);
         bufferedReader = new BufferedReader(fileReader);
         while ((linesToRead = bufferedReader.readLine()) != null){
             System.out.println(linesToRead);
         }
-    }
-    /*public void write(String FileName, double dataValues) throws FileNotFoundException {
-        filePath = new File(dataOutpuPath + FileName + fileExtension);
-        writeToText = new PrintWriter(FileName + fileExtension);
-        writeToText.println(dataValues +"\n");
-        writeToText.close();
-    }
-
-    public String read(String fileName) throws IOException {
-        fileReader = new FileReader( dataOutpuPath + fileName + fileExtension);
-        bufferedReader = new BufferedReader(fileReader);
-        while ((linesToRead = bufferedReader.readLine()) != null){
-            System.out.println(linesToRead);
-        }
-        return fileName;
     }*/
 
+    public void write2(double dataValue) throws FileNotFoundException {
+        dataOut = new File(dataOutpuPath + getFileName() + fileExtension);
+        fos = new FileOutputStream(dataOut);
+        ps = new PrintStream(fos);
+        System.setOut(ps);
+        System.out.println(dataValue);
+        ps.close();
+
+    }
 }
