@@ -74,7 +74,7 @@ public class ADSReadVoltage implements ADSInterface {
         actualVoltage = rawVoltage * multiplier;
     }
 
-    public double getVoltage(){
+    public double getDataValue(){
         return actualVoltage;
     }
 }

@@ -6,4 +6,5 @@ public interface ADSInterface<T> {
     void setupGpio();
     void analogPinValueListener();
     void setListenerValue(GpioPinAnalogValueChangeEvent gpioEvent);
+    double getDataValue();
 }

@@ -59,7 +59,7 @@ public class ADSVoltage {
 
 
         // Define the monitoring thread refresh interval (in milliseconds).
-        // This governs the rate at which the monitoring thread will read input values from the ADC chip
+        // This governs the rate at which the monitoring thre ad will read input values from the ADC chip
         // (a value less than 50 ms is not permitted)
         DIFF.setMonitorInterval(100);
 

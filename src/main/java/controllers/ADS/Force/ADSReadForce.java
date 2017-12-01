@@ -23,7 +23,7 @@ public class ADSReadForce implements ADSInterface {
     private double outputSensitivity;
     private double value;
     private double percent;
-    private double voltage;
+    private double rawVoltage;
     private double force;
 
     public GpioPinListener listener;
@@ -68,7 +68,12 @@ public class ADSReadForce implements ADSInterface {
         outputSensitivity = -4.9;
         value = gpioEvent.getValue();
         percent = ((value * 100) / ADS1015GpioProvider.ADS1015_RANGE_MAX_VALUE);
-        voltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage() * (percent/100);
-        force = (voltage * outputSensitivity) + baseLine;
+        rawVoltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage() * (percent/100);
+        force = (rawVoltage * outputSensitivity) + baseLine;
+    }
+
+    public double getDataValue(){
+
+        return force;
     }
 }
