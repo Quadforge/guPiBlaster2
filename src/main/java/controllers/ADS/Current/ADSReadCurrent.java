@@ -59,7 +59,7 @@ public class ADSReadCurrent implements ADSInterface {
             @Override
             public void handleGpioPinAnalogValueChangeEvent(GpioPinAnalogValueChangeEvent event) {
                 setListenerValue(event);
-                System.out.println(DF.format(current));
+                System.out.println(DF.format(getDataValue()));
             }
         };
     }
@@ -73,5 +73,10 @@ public class ADSReadCurrent implements ADSInterface {
         percent = ((value * 100) / ADS1015GpioProvider.ADS1015_RANGE_MAX_VALUE);
         voltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage();
         current = (voltage - baseLine) /outputSensitivity;
+    }
+
+    @Override
+    public double getDataValue() {
+        return current;
     }
 }
