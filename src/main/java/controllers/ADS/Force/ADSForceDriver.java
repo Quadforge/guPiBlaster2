@@ -10,6 +10,6 @@ public class ADSForceDriver {
         a.DifferentialReadings();*/
         ADSReadForce force = new ADSReadForce();
         force.analogPinValueListener();
-        force.DIFF_ANALOG_INPUTS[0].addListener(force.listener);
+        force.DIFF_ANALOG_INPUTS[0].addListener(force.forceListener);
     }
 }
