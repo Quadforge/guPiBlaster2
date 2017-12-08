@@ -19,8 +19,8 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class ADSReadCurrent implements ADSInterface {
-    private double baseLine; //why is this not a constant?
-    private double outputSensitivity; //why is this not a constant?
+    private final double baseLine = 0.5; //baseline of 0.5V = 0Amps
+    private final double outputSensitivity = 0.133; //for each Amp of current the sensor output increases 0.133V
     private double value;
     private double percent;
     private double rawVoltage;
@@ -35,7 +35,7 @@ public class ADSReadCurrent implements ADSInterface {
     private final DifferentialGpioProvider DIFFERENTIAL_PROVIDER = new DifferentialGpioProvider(
             I2CBus.BUS_1, ADS1015GpioProvider.ADS1015_ADDRESS_0x48);
 
-    protected final GpioPinAnalog DIFF_ANALOG_INPUTS[] = {
+    public final GpioPinAnalog[] DIFF_ANALOG_INPUTS = {
             GPIO.provisionAnalogInputPin(DIFFERENTIAL_PROVIDER, ADS1015DifferentialPins.INPUT_A0_A1)
     };
 
@@ -67,8 +67,6 @@ public class ADSReadCurrent implements ADSInterface {
     @Override
   //The function below is doing allot of "actions". While returning a current value. The name of the function does not acurately represent what is going to occur.
     public void setListenerValue(GpioPinAnalogValueChangeEvent gpioEvent) {
-        baseLine = 0.5; //why is this set here? Could be declared as a constant or set with a constructor.
-        outputSensitivity = 0.133; //why is this set here? Could be declared as a constant or set with a constructor.
         value = gpioEvent.getValue();
         percent = ((value * 100) / ADS1015GpioProvider.ADS1015_RANGE_MAX_VALUE);
         rawVoltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage()* (percent/100);

@@ -19,21 +19,21 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class ADSReadForce implements ADSInterface {
-    private double baseLine;
-    private double outputSensitivity;
+    private final double baseLine = 12.25; //this is the intercept value of the standard y = mx + b
+    private final double outputSensitivity = -4.9; //measured in N/V
     private double value;
     private double percent;
     private double rawVoltage;
     private double force;
 
-    public GpioPinListener listener;
+    public GpioPinListener forceListener;
 
     protected  final DecimalFormat DF = new DecimalFormat("#.##");
 
     private final GpioController GPIO = GpioFactory.getInstance();
 
     private final DifferentialGpioProvider DIFFERENTIAL_PROVIDER = new DifferentialGpioProvider(I2CBus.BUS_1, ADS1015GpioProvider.ADS1015_ADDRESS_0x49);
-    protected final GpioPinAnalog DIFF_ANALOG_INPUTS[] = {
+    public final GpioPinAnalog[] DIFF_ANALOG_INPUTS = {
             GPIO.provisionAnalogInputPin(DIFFERENTIAL_PROVIDER, ADS1015DifferentialPins.INPUT_A0_A1, "A0-A1")
     };
 
@@ -54,7 +54,7 @@ public class ADSReadForce implements ADSInterface {
 
     @Override
     public void analogPinValueListener() {
-        listener = new GpioPinListenerAnalog() {
+        forceListener = new GpioPinListenerAnalog() {
             @Override
             public void handleGpioPinAnalogValueChangeEvent(GpioPinAnalogValueChangeEvent event) {
                 setListenerValue(event);
@@ -64,8 +64,6 @@ public class ADSReadForce implements ADSInterface {
     }
 
     public void setListenerValue(GpioPinAnalogValueChangeEvent gpioEvent) {
-        baseLine = 12.25;
-        outputSensitivity = -4.9;
         value = gpioEvent.getValue();
         percent = ((value * 100) / ADS1015GpioProvider.ADS1015_RANGE_MAX_VALUE);
         rawVoltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage() * (percent/100);

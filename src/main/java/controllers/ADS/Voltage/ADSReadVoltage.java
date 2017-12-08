@@ -1,4 +1,4 @@
-package ADS.Force;
+package ADS.Voltage;
 
 import ADS.ADS1015DifferentialPins;
 import ADS.DifferentialGpioProvider;
@@ -22,7 +22,6 @@ import java.text.DecimalFormat;
 public class ADSReadVoltage implements ADSInterface {
     private double value;
     private double percent;
-    private double voltage;
     protected double rawVoltage;
     protected double actualVoltage;
     private final double multiplier = 4;
@@ -35,7 +34,7 @@ public class ADSReadVoltage implements ADSInterface {
 
     ReadAndWriteText write = new ReadAndWriteText();
 
-    private final DifferentialGpioProvider DIFFERENTIAL_PROVIDER = new DifferentialGpioProvider(I2CBus.BUS_1, ADS1015GpioProvider.ADS1015_ADDRESS_0x49);
+    private final DifferentialGpioProvider DIFFERENTIAL_PROVIDER = new DifferentialGpioProvider(I2CBus.BUS_1, ADS1015GpioProvider.ADS1015_ADDRESS_0x48);
     public final GpioPinAnalog DIFF_ANALOG_INPUTS[] = {
             GPIO.provisionAnalogInputPin(DIFFERENTIAL_PROVIDER, ADS1015DifferentialPins.INPUT_A0_A1, "A0-A1")
     };
