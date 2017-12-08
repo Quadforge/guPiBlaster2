@@ -59,7 +59,7 @@ public class ADSReadCurrent implements ADSInterface {
             @Override
             public void handleGpioPinAnalogValueChangeEvent(GpioPinAnalogValueChangeEvent event) {
                 setListenerValue(event);
-                System.out.println(DF.format(current));
+                System.out.println(DF.format(getDataValue()));
             }
         };
     }
@@ -75,6 +75,11 @@ public class ADSReadCurrent implements ADSInterface {
 
     public double getDataValue(){
 
+        return current;
+    }
+
+    @Override
+    public double getDataValue() {
         return current;
     }
 }

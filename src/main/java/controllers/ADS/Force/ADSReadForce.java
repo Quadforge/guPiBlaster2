@@ -58,7 +58,7 @@ public class ADSReadForce implements ADSInterface {
             @Override
             public void handleGpioPinAnalogValueChangeEvent(GpioPinAnalogValueChangeEvent event) {
                 setListenerValue(event);
-                System.out.println(DF.format(force));
+                System.out.println(DF.format(getDataValue()));
             }
         };
     }
@@ -72,6 +72,10 @@ public class ADSReadForce implements ADSInterface {
 
     public double getDataValue(){
 
+        return force;
+    }
+
+    public double getDataValue(){
         return force;
     }
 }

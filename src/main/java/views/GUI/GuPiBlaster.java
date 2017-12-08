@@ -1,11 +1,9 @@
 import ADS.Voltage.ADSReadVoltage;
-import HelperFunctions.ReadAndWrite;
-import HelperFunctions.ReadAndWriteText;
-import HelperFunctions.ReturnADSReadings;
 import com.pi4j.io.i2c.I2CFactory;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class GuPiBlaster extends JFrame {
@@ -21,9 +19,15 @@ public class GuPiBlaster extends JFrame {
     public JTextField currentBox, forceBox, temperatureBox, voltageBox;
     private JLabel currentLabel, forceLabel, temperatureLabel, voltageLabel;
 
+/*
     ReadAndWriteText readADS = new ReadAndWriteText();
+*/
+    ADSReadVoltage getVoltage = new ADSReadVoltage();
+
 
     public GuPiBlaster(String windowTitle) throws IOException, I2CFactory.UnsupportedBusNumberException {
+        getVoltage.analogPinValueListener();
+        getVoltage.DIFF_ANALOG_INPUTS[0].addListener(getVoltage.voltageListener);
         setTitle(windowTitle);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         buildPanel();
@@ -32,7 +36,7 @@ public class GuPiBlaster extends JFrame {
         setVisible(true);
     }
 
-    public void buildPanel() {
+    public void buildPanel() throws FileNotFoundException {
         mainPanel = new JPanel(new GridLayout(1,2));
 
         readingsPanel = new JPanel(new GridLayout(1,1));
@@ -57,7 +61,8 @@ public class GuPiBlaster extends JFrame {
         temperatureBox.setEditable(false);
 
         voltageLabel = new JLabel("Volts");
-        voltageBox = new JTextField();
+        //voltageBox = new JTextField(String.valueOf(getVoltage.DF.format(getVoltage.getDataValue())));
+        //voltageBox = new JTextField().setText(String.valueOf(getVoltage.DF.format(getVoltage.getDataValue())));
         voltageBox.setEditable(false);
 
         readingsTextBoxPanel.add(currentBox);
@@ -77,6 +82,11 @@ public class GuPiBlaster extends JFrame {
 
         mainPanel.add(readingsPanel);
         mainPanel.add(servoBlasterPanel);
+
+    }
+
+    public static void main(String[] args) throws IOException, I2CFactory.UnsupportedBusNumberException {
+        GuPiBlaster runADS = new GuPiBlaster("blaster");
 
     }
 }
