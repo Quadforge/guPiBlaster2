@@ -83,6 +83,10 @@ public class ReadAndWrite {
         return words;
     }
 
+    public String getPath() {
+        return path;
+    }
+
 }
 
 
