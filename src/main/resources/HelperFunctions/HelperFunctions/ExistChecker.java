@@ -17,18 +17,22 @@ import java.io.IOException;
 
 public class ExistChecker {
 
+    // The ReadAndWrite Functions
     private ReadAndWrite writer = new ReadAndWrite();
     private String fileName = writer.getFileName();
     private String write = writer.getWords();
     private String directory = writer.getDirectory();
     private String path = writer.getPath();
 
+    //The File used
     private File file;
 
-    private JButton oW = new JButton("Overwrite"); //Works
-    private JButton aO = new JButton("Add On"); // Works
-    private JButton c = new JButton("Cancel"); // works
+    //The buttons in the JOptionPane
+    private JButton oW = new JButton("Overwrite");
+    private JButton aO = new JButton("Add On");
+    private JButton c = new JButton("Cancel");
 
+    //The Dialog used to have the ability to close the pane rather than exiting the program
     private JDialog fileFoundDialog;
 
     public void writeGui(String fileName) throws FileNotFoundException, IOException{
@@ -82,16 +86,16 @@ public class ExistChecker {
                     buttons,
                     buttons[0]);
 
-            fileFoundDialog.getContentPane().add(pane);
+            fileFoundDialog.getContentPane().add(pane);     //Allows the pane to be edited by the Dialog
             fileFoundDialog.setSize(405,120);
             fileFoundDialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            fileFoundDialog.addWindowListener(new WindowAdapter() {
+            fileFoundDialog.addWindowListener(new WindowAdapter() {     //Clicking x stops program
                 @Override
                 public void windowClosing(WindowEvent e) {
                     System.exit(0);
                 }
             });
-            fileFoundDialog.setLocationRelativeTo(fileFoundFrame);
+            fileFoundDialog.setLocationRelativeTo(fileFoundFrame);      //keeps frame in the middle of the screen
             fileFoundDialog.setVisible(true);
 
         }else{
