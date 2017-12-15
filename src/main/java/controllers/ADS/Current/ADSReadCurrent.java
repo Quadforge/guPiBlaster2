@@ -28,7 +28,7 @@ public class ADSReadCurrent implements ADSInterface {
 
     public GpioPinListener currentListener;
 
-    protected  final DecimalFormat DF = new DecimalFormat("#.##");
+    public final DecimalFormat DF = new DecimalFormat("#.##");
 
     private final GpioController GPIO = GpioFactory.getInstance();
 
@@ -48,9 +48,9 @@ public class ADSReadCurrent implements ADSInterface {
     public void setupGpio() {
         DIFFERENTIAL_PROVIDER.setProgrammableGainAmplifier(
                 ADS1x15GpioProvider.ProgrammableGainAmplifierValue.PGA_4_096V, ADS1015Pin.ALL);
-        DIFFERENTIAL_PROVIDER.setEventThreshold(500, ADS1015Pin.ALL);
+        DIFFERENTIAL_PROVIDER.setEventThreshold(0.01, ADS1015Pin.ALL);
 
-        DIFFERENTIAL_PROVIDER.setMonitorInterval(100);
+        DIFFERENTIAL_PROVIDER.setMonitorInterval(1000);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class ADSReadCurrent implements ADSInterface {
             @Override
             public void handleGpioPinAnalogValueChangeEvent(GpioPinAnalogValueChangeEvent event) {
                 setListenerValue(event);
-                System.out.println(DF.format(getDataValue()));
+                getDataValue();
             }
         };
     }
@@ -73,13 +73,10 @@ public class ADSReadCurrent implements ADSInterface {
         current = (rawVoltage - baseLine) /outputSensitivity;
     }
 
-    public double getDataValue(){
-
-        return current;
-    }
 
     @Override
     public double getDataValue() {
+        System.out.println("Current " + DF.format(current));
         return current;
     }
 }

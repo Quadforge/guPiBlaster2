@@ -28,7 +28,7 @@ public class ADSReadForce implements ADSInterface {
 
     public GpioPinListener forceListener;
 
-    protected  final DecimalFormat DF = new DecimalFormat("#.##");
+    public  final DecimalFormat DF = new DecimalFormat("#.##");
 
     private final GpioController GPIO = GpioFactory.getInstance();
 
@@ -47,9 +47,9 @@ public class ADSReadForce implements ADSInterface {
         DIFFERENTIAL_PROVIDER.setProgrammableGainAmplifier(
                 ADS1x15GpioProvider.ProgrammableGainAmplifierValue.PGA_4_096V, ADS1015Pin.ALL);
 
-        DIFFERENTIAL_PROVIDER.setEventThreshold(500, ADS1015Pin.ALL);
+        DIFFERENTIAL_PROVIDER.setEventThreshold(0.01, ADS1015Pin.ALL);
 
-        DIFFERENTIAL_PROVIDER.setMonitorInterval(100);
+        DIFFERENTIAL_PROVIDER.setMonitorInterval(1000);
     }
 
     @Override
@@ -71,11 +71,7 @@ public class ADSReadForce implements ADSInterface {
     }
 
     public double getDataValue(){
-
-        return force;
-    }
-
-    public double getDataValue(){
+        System.out.println("Force " + DF.format(force));
         return force;
     }
 }
