@@ -74,4 +74,9 @@ public class ADSReadCurrent implements ADSInterface {
         voltage = DIFFERENTIAL_PROVIDER.getProgrammableGainAmplifier(gpioEvent.getPin()).getVoltage();
         current = (voltage - baseLine) /outputSensitivity;
     }
+
+    @Override
+    public double getDataValue() {
+        return 0;
+    }
 }

@@ -74,8 +74,4 @@ public class ADSReadForce implements ADSInterface {
         System.out.println("Force " + DF.format(force));
         return force;
     }
-
-    public double getDataValue(){
-        return force;
-    }
 }
