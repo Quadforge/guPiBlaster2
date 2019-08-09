@@ -7,6 +7,7 @@
 package HelperFunctions;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class ReadAndWriteText {
 
@@ -59,13 +60,22 @@ public class ReadAndWriteText {
             System.out.println(linesToRead);
         }
     }*/
+    public double read(String fileName) throws FileNotFoundException {
+        double dataValue = 0;
+        File file = new File(dataOutpuPath + fileName + fileExtension);
+        Scanner x = new Scanner(file);
+        while (x.hasNext()){
+            dataValue = x.nextDouble();
+        }
+        return dataValue;
+    }
 
-    public void write2(double dataValue) throws FileNotFoundException {
-        dataOut = new File(dataOutpuPath + getFileName() + fileExtension);
-        fos = new FileOutputStream(dataOut);
+    public void write2(String dataValue, String fileName) throws FileNotFoundException {
+        dataOut = new File(dataOutpuPath + fileName + fileExtension);
+        fos = new FileOutputStream(dataOut, true);
         ps = new PrintStream(fos);
-        System.setOut(ps);
         System.out.println(dataValue);
+        System.setOut(ps);
         ps.close();
 
     }

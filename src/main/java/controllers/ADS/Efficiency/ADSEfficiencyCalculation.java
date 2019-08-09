@@ -1,12 +1,10 @@
 package ADS.Efficiency;
 
-import HelperFunctions.ReadAndWriteText;
-
-import java.io.IOException;
-import ADS.Current.ADSReadCurrent;
 import ADS.Force.ADSReadForce;
 import ADS.Voltage.ADSReadVoltage;
 import com.pi4j.io.i2c.I2CFactory;
+
+import java.io.IOException;
 
 
 public class ADSEfficiencyCalculation{
